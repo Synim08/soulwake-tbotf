@@ -84,3 +84,7 @@ No son nuevos compromisos de balance aprobados uno a uno por el usuario. Se adop
 - Generadas exportaciones web y Windows; verificadas con el alcance descrito en AVANCE-001.md.
 - Registradas 42 comprobaciones de lógica aprobadas; no equivalen a una prueba humana completa ni a validación móvil.
 - F0 completada y F1 en curso. El objetivo siguiente es probar y pulir esta muestra antes de ampliar contenido.
+
+### 2026-11-09 — recorrido principal validado por el usuario
+
+El usuario confirmó haber vencido al guardián y restaurado el faro, tras declarar que el juego funciona a la perfección. Se acredita el recorrido humano completo de la muestra. Plataforma, duración y estrategia no especificadas. F1 sigue en curso por las comprobaciones de persistencia y flujo de copias pendientes; esta validación no demuestra soporte móvil o equilibrio de sesiones largas.

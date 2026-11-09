@@ -52,8 +52,8 @@ Durante la revisión visual se ajustó la altura de la interfaz para conservar l
 
 ## Límites y trabajo pendiente
 
-- F1 sigue abierta: falta una persona ajena al código que complete el recorrido y compruebe claridad y ritmo.
-- No se ha completado toda la aventura mediante la interfaz durante esta entrega.
+- El usuario confirmó haber vencido al guardián y restaurado el faro, tras indicar que el juego funciona a la perfección. El recorrido principal está validado por su prueba; F1 continúa abierta por comprobaciones de persistencia e interfaz pendientes.
+- El recorrido completo mediante la interfaz fue confirmado por el usuario el 9 de noviembre de 2026. No se especificaron plataforma, duración ni estrategia; no se atribuye esta confirmación a un dispositivo o navegador concreto.
 - Importación/exportación tiene validación de datos probada, pero su flujo completo de portapapeles y sustitución por interfaz aún requiere revisión manual.
 - Falta ampliar comprobaciones de derrota/reanudación en navegador y de ausencia real con cierre completo del navegador.
 - No hay validación en móvil real, mando, Safari o Firefox; la orientación vertical requiere adaptación.
@@ -66,4 +66,8 @@ Durante la revisión visual se ajustó la altura de la interfaz para conservar l
 
 ## Siguiente paso
 
-Probar con el usuario esta muestra y registrar qué entiende, dónde duda y qué resulta repetitivo. Priorizar problemas de controles, recorrido, guardado y economía; cerrar F1 antes de comenzar el bloque de estilos y equipo de F2.
+El usuario ya completó la aventura. Completar la revisión de importación/exportación, derrota/reanudación y producción tras una ausencia real; recoger comentarios de ritmo cuando estén disponibles. Cerrar F1 antes de comenzar el bloque de estilos y equipo de F2.
+
+## Validación del usuario — 2026-11-09
+
+El usuario indicó primero «funciona a la perfección» y después confirmó: «Vencí al guardián y restauré el faro». Se registra como prueba humana completada del recorrido principal y funcionamiento satisfactorio declarado. No confirma por sí sola todos los casos de guardado, el balance a largo plazo o soporte móvil.

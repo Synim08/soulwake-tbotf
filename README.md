@@ -40,7 +40,7 @@ Las fases no tienen fechas prometidas. Se ejecutan por dependencias y resultados
 
 ## Próximo paso
 
-Probar la muestra 0.1 con el usuario, verificar el recorrido completo sin ayuda del código y recoger problemas de claridad, controles y ritmo. Completar las comprobaciones de F1 pendientes antes de ampliar estilos, equipo y contenido de F2.
+El usuario ya confirmó completar la muestra hasta vencer al guardián y restaurar el faro. Completar las comprobaciones de importación/exportación, derrota/reanudación y ausencia real de F1 antes de ampliar estilos, equipo y contenido de F2.
 
 ## Procedencia
 

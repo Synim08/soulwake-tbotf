@@ -54,6 +54,8 @@ Aceptación:
 4. Probar la versión exportada en un navegador; registrar por separado cualquier prueba de escritorio o móvil.
 5. Una persona que no conozca el código puede identificar el objetivo y la siguiente acción. Registrar la prueba cuando se realice.
 
+Validación humana recibida el 2026-11-09: el usuario completó el recorrido hasta vencer al guardián y restaurar el faro y declaró que funciona a la perfección. El ciclo principal queda validado; faltan las comprobaciones de persistencia e interfaz detalladas en AVANCE-001.md. No se da por terminada toda F1.
+
 Tareas relacionadas: J01–J05, J09–J10, J14; T01–T10.
 
 ## F2 — profundidad del RPG
@@ -121,4 +123,4 @@ Tareas relacionadas: T01–T12 y revisión de J01–J14.
 
 ## Registro de entregas
 
-2026-11-09 — 0.1.0-dev: primera muestra Godot, exportación web y Windows, 42 comprobaciones de lógica aprobadas y recorrido web parcial con persistencia de victoria comprobada. F0 completada; F1 pendiente de validación completa de interfaz, importación/exportación y prueba de una persona ajena al código. Ver AVANCE-001.md.
+2026-11-09 — 0.1.0-dev: primera muestra Godot, exportación web y Windows, 42 comprobaciones de lógica aprobadas y recorrido web parcial con persistencia de victoria comprobada. F0 completada; Recorrido completo confirmado por el usuario; F1 pendiente de comprobaciones adicionales de interfaz, importación/exportación y persistencia. Ver AVANCE-001.md.
