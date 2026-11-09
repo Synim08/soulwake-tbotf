@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemy_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "guardian"
+display_name = "Guardián de la veta"
+max_hp = 64
+attack = 10
+defense = 3
+gold = 40
+tint = Color(0.68, 0.60, 0.39, 1)
+boss = true

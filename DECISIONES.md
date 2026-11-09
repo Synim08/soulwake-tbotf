@@ -1,0 +1,86 @@
+# Decisiones y registro de cambios
+
+Última actualización: 2026-11-09.
+
+## Decisiones aceptadas
+
+### D01 — ampliar el juego con Godot y GDScript
+
+Fecha: 2026-11-09. Estado: aceptada como dirección.
+
+El usuario quiere un juego más grande y aceptó la recomendación de Godot. El objetivo es facilitar mapas, contenido, interfaces y reutilización. La elección no corrige por sí sola los errores de lógica del prototipo ni acredita mejoras de rendimiento. No se iniciará una reescritura en C como parte de esta dirección.
+
+### D02 — conservar la posibilidad de navegador
+
+Fecha: 2026-11-09. Estado: dirección técnica.
+
+El navegador es una opción válida para el usuario. Se contempla exportación web con GDScript y se mantiene escritorio como posibilidad. No se ha acordado todavía la plataforma de la primera publicación ni una lista de dispositivos garantizados.
+
+### D03 — exploración, reconstrucción y ayudantes conectados
+
+Fecha: 2026-11-09. Estado: dirección aceptada.
+
+Adoptar las 14 propuestas de DISENO.md y las mejoras técnicas como visión del proyecto. La aventura recupera lugares y habitantes; el pueblo produce recursos para nuevas aventuras. Introducirlas por fases y comprobar su utilidad antes de ampliar su escala.
+
+### D04 — primera muestra pequeña y completa
+
+Fecha: 2026-11-09. Estado: propuesta de alcance dentro de la dirección aceptada.
+
+Objetivo inicial: pueblo con herrería reparable, bosque, mina, tres enemigos, jefe y dos ayudantes. Validar el ciclo completo y el guardado antes de construir una campaña extensa. Las cantidades son una referencia inicial que se puede ajustar con motivo documentado.
+
+### D05 — documentación mantenible y evidencia
+
+Fecha: 2026-11-09. Estado: solicitada explícitamente por el usuario.
+
+Mantener roadmap, diseño, técnica, backlog, decisiones e investigación para conservar todas las ideas y actualizar el trabajo. Distinguir aprobado, propuesto, implementado y comprobado. No marcar el motor, las plataformas ni las mecánicas como implementados por aparecer en un plan.
+
+## Reglas todavía por concretar
+
+El usuario aprobó el conjunto de ideas; no se han fijado curvas de costes, estadísticas, límite offline, persistencia exacta del reinicio, número final de regiones, versión del motor ni fecha de publicación. Consultar O01–O12 en BACKLOG.md y resolver cada cuestión cuando afecte a una fase.
+
+## Plantilla para nuevas decisiones
+
+ID y título:
+
+Fecha y estado:
+
+Problema o necesidad:
+
+Decisión y motivo:
+
+Alternativas consideradas, si resultan relevantes:
+
+Tareas, reglas y guardados afectados:
+
+Evidencia y cuestiones pendientes:
+
+## Registro de cambios
+
+### 2026-11-09 — documentación inicial
+
+- Conservada la dirección acordada en esta conversación.
+- Registradas las 14 ideas jugables y 12 líneas de trabajo técnico; las ocho prioridades técnicas iniciales se desarrollan y complementan con herramientas, números grandes y mantenimiento.
+- Organizado el trabajo en F0–F6, con dependencias y criterios de aceptación.
+- Registrados los fallos reproducidos de derrota/victoria y la observación de tiempo del HTML.
+- Conservada la limitación de las pruebas: no hubo partida completa ni validación móvil real.
+- Añadidas referencias oficiales y opiniones de usuarios con su alcance.
+- Incluida una copia del prototipo original para futuras comparaciones.
+- Sin implementación nueva, publicación ni cambios en el HTML original.
+
+## D06 — valores operativos de la primera muestra
+
+Fecha: 2026-11-09. Estado: decisiones de implementación provisionales para probar la dirección aceptada.
+
+Motor 4.7.2, renderizador Compatibility, GDScript, lienzo 1152×768 y movimiento por casillas. Primera cadena: lobo abre mina → reparar herrería → Mara produce mineral e Ivo lingotes → fabricar espada → guardián → restaurar faro. Ayudantes con funciones fijas en esta muestra; su reasignación a profesiones diferentes pertenece a F3.
+
+Reglas iniciales: offline hasta 8 horas; vida 38 y maná 12; derrota pierde hasta 5 monedas, conserva materiales y recupera vida/maná al confirmar el regreso; retirada segura. Enemigos vencidos no reaparecen. Venta de mineral a 3 monedas para evitar un bloqueo económico. Sin audio ni migración del HTML; partidas de las versiones HTML, web Godot y Windows son independientes.
+
+No son nuevos compromisos de balance aprobados uno a uno por el usuario. Se adoptan como punto de partida reversible y deben ajustarse según las pruebas. Se mantienen abiertas las decisiones posteriores de campaña, talentos y renacimiento.
+
+### 2026-11-09 — primera implementación
+
+- Creado el proyecto Godot, los datos de enemigos y los servicios de combate, producción y guardado.
+- Construidas tres regiones y el primer ciclo de reconstrucción.
+- Generadas exportaciones web y Windows; verificadas con el alcance descrito en AVANCE-001.md.
+- Registradas 42 comprobaciones de lógica aprobadas; no equivalen a una prueba humana completa ni a validación móvil.
+- F0 completada y F1 en curso. El objetivo siguiente es probar y pulir esta muestra antes de ampliar contenido.

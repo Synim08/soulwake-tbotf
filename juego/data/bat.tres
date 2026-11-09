@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemy_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "bat"
+display_name = "Murciélago de cobre"
+max_hp = 18
+attack = 6
+defense = 0
+gold = 9
+tint = Color(0.71, 0.52, 0.72, 1)
