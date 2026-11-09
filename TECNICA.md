@@ -1,6 +1,6 @@
 # Diseño técnico propuesto
 
-Fecha: 2026-11-09. Existe una primera implementación Godot 0.1.0-dev. Este documento conserva el diseño técnico general; el alcance realmente implementado y probado figura en AVANCE-001.md y juego/LEEME.md.
+Fecha: 2026-11-09. Existe una implementación Godot 0.2.0-dev. Este documento conserva el diseño técnico general; el alcance realmente implementado y probado figura en AVANCE-002.md y juego/LEEME.md.
 
 ## Plataforma y motor
 
@@ -124,3 +124,12 @@ Las recomendaciones de arquitectura y pruebas son propuestas del proyecto. Las f
 ## Implementación 0.1 y trabajo pendiente
 
 Guardado JSON con esquema 1, respaldo y validación; servicios separados de combate, economía y persistencia; definiciones de enemigos en recursos; TileMapLayer generado a partir de datos de región; escenas de interfaz construidas por código. Recetas, misiones y edificios aún usan reglas pequeñas en game.gd, pendientes de generalizar al ampliar contenido. No se ha implementado migración desde el HTML ni desde esquemas anteriores; versiones desconocidas se rechazan conservando la partida existente. No hay renacimiento que probar todavía. Ver informe de avance para evidencia y límites.
+
+## Actualización técnica 0.2
+
+- Esquema 2 con estilo activo y equipo/talento por estilo. Lectura de esquema 1 con migración y copia original separada antes del primer guardado actualizado.
+- Definiciones de equipo en recursos; pasivas, talentos y cálculo de estadísticas separados del flujo de interfaz.
+- Combate guarda duración de quemadura, contador de críticos y contexto de entrenamiento, incluidos suministros que deben restaurarse.
+- La importación no cambia la sesión si falla la escritura de la copia validada. La validación rechaza equipo desconocido, coordenadas fraccionadas o posiciones dentro de obstáculos en los casos probados.
+- Lectura asíncrona del portapapeles web mediante JavaScriptBridge y descarga JSON. Referencia técnica consultada: https://docs.godotengine.org/en/stable/classes/class_javascriptbridge.html.
+- Tests aislados con `-- --test-mode`; el autoload no carga ni escribe la ranura real. Tres suites, 98 comprobaciones. El esquema se mantiene compatible con las partidas 0.1; no existe migración del HTML.

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GearDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/gear_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "valley_blade"
+display_name = "Espada del valle"
+description = "Ataque +5: mejor daño directo."
+attack_bonus = 5

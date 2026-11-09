@@ -60,6 +60,8 @@ Tareas relacionadas: J01–J05, J09–J10, J14; T01–T10.
 
 ## F2 — profundidad del RPG
 
+Avance 0.2: implementados tres estilos, dos talentos alternativos por estilo, tres armas de herrería, dos reliquias, configuración recordada y entrenamiento repetible sin premios. F2 continúa abierta por comportamientos enemigos, exploración y las mejoras de interfaz/controles restantes. Evidencia en AVANCE-002.md.
+
 - Añadir estilos de guerrero defensivo, mago de estados y explorador de críticos; permitir experimentar y redistribuir talentos en el pueblo.
 - Crear una selección pequeña de equipo con efectos sobre habilidades y comparación clara.
 - Ampliar intenciones enemigas, estados, defensa e interrupciones. Evitar que una única acción resuelva todos los combates.
@@ -124,3 +126,5 @@ Tareas relacionadas: T01–T12 y revisión de J01–J14.
 ## Registro de entregas
 
 2026-11-09 — 0.1.0-dev: primera muestra Godot, exportación web y Windows, 42 comprobaciones de lógica aprobadas y recorrido web parcial con persistencia de victoria comprobada. F0 completada; Recorrido completo confirmado por el usuario; F1 pendiente de comprobaciones adicionales de interfaz, importación/exportación y persistencia. Ver AVANCE-001.md.
+
+2026-11-09 — 0.2.0-dev: cierre de F1; primera selección de estilos, talentos y equipo de F2, práctica sin recompensas y migración de partidas. Tres suites suman 98 comprobaciones aprobadas; interfaz y combate comprobados parcialmente en Chromium.

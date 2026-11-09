@@ -137,7 +137,8 @@ func _draw() -> void:
 			draw_arc(p+Vector2(16,27), 19, 0, TAU, 24, Color("edcf8c"), 2)
 		if obj.kind in ["person", "portal"]:
 			_label(obj.label, p+Vector2(16, -6), 11, Color("f1e8ca"), true)
-	_person(visual, Color("7ebda6"), true)
+	var coat: Color = {"guardian": Color("7ebda6"), "mage": Color("b89aca"), "ranger": Color("d5b06f")}.get(Game.state.active_style, Color("7ebda6"))
+	_person(visual, coat, true)
 	if Game.state.flags.beacon and region == "village":
 		for i in range(8):
 			var p := Vector2(18.5*32, 4.4*32) + Vector2(sin(animation+i)*28, -fmod(animation*14+i*12,65))

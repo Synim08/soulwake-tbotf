@@ -36,7 +36,7 @@ Mantener roadmap, diseño, técnica, backlog, decisiones e investigación para c
 
 ## Reglas todavía por concretar
 
-El usuario aprobó el conjunto de ideas; no se han fijado curvas de costes, estadísticas, límite offline, persistencia exacta del reinicio, número final de regiones, versión del motor ni fecha de publicación. Consultar O01–O12 en BACKLOG.md y resolver cada cuestión cuando afecte a una fase.
+El usuario aprobó el conjunto de ideas. La muestra usa Godot 4.7.2 y reglas provisionales de estadísticas, costes y límite offline documentadas en juego/LEEME.md. Siguen pendientes el balance definitivo, las reglas completas de renacimiento, el número final de regiones y la fecha de publicación. Consultar O01–O12 y sus resoluciones en BACKLOG.md.
 
 ## Plantilla para nuevas decisiones
 
@@ -88,3 +88,13 @@ No son nuevos compromisos de balance aprobados uno a uno por el usuario. Se adop
 ### 2026-11-09 — recorrido principal validado por el usuario
 
 El usuario confirmó haber vencido al guardián y restaurado el faro, tras declarar que el juego funciona a la perfección. Se acredita el recorrido humano completo de la muestra. Plataforma, duración y estrategia no especificadas. F1 sigue en curso por las comprobaciones de persistencia y flujo de copias pendientes; esta validación no demuestra soporte móvil o equilibrio de sesiones largas.
+
+## D07 — cerrar F1 y entregar una primera selección de F2
+
+Fecha: 2026-11-09. Estado: implementación de la continuación autorizada por el usuario.
+
+F1 se cierra para escritorio/navegador horizontal tras validar el recorrido humano y completar copias, derrota y ausencia real en Chromium. El alcance no se extiende a móvil/mando sin pruebas.
+
+F2 comienza con tres estilos y dos talentos alternativos por estilo, gratuitos en el pueblo. La herrería ofrece espada, bastón y arco tras el hito de fabricación existente; el guardián desbloquea dos reliquias. Cada estilo recuerda su equipo y talento. Se elige un entrenamiento sin premios y con suministros restaurados para probar esta ampliación después del final actual. Estas son decisiones de prototipo reversibles, no balance definitivo.
+
+La compatibilidad de partidas se amplía mediante esquema 2 y migración desde esquema 1, conservando el progreso narrativo y una copia original separada. Los nuevos estados de combate persisten. Las pruebas y límites se registran en AVANCE-002.md.

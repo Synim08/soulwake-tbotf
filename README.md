@@ -4,7 +4,7 @@
 
 ## Estado real
 
-Existe el prototipo original en HTML/JavaScript y una primera muestra jugable en Godot 4.7.2, versión 0.1.0-dev. F0 está completada; F1 está en curso. Hay versiones exportadas para Windows y web. El roadmap completo sigue pendiente; consulta AVANCE-001.md para conocer lo implementado y sus pruebas.
+Existe el prototipo original en HTML/JavaScript y una primera muestra jugable en Godot 4.7.2, versión 0.2.0-dev. F0 y F1 están completadas para el alcance de escritorio/navegador horizontal; F2 está en curso. Hay versiones exportadas para Windows y web. El roadmap completo sigue pendiente; consulta AVANCE-002.md para conocer la versión actual y sus pruebas.
 
 Dirección aceptada: ampliar el prototipo como RPG incremental 2D con Godot y GDScript, conectando exploración, reconstrucción del valle, ayudantes y progreso permanente. Mantener la posibilidad de publicar en navegador. El usuario aprobó el conjunto de propuestas del 9 de noviembre; las cifras de equilibrio, el alcance de cada entrega y las reglas señaladas como propuestas siguen sujetos a prueba.
 
@@ -13,7 +13,8 @@ Dirección aceptada: ampliar el prototipo como RPG incremental 2D con Godot y GD
 - Windows: [Aventura-del-Valle.exe](compilaciones/windows/Aventura-del-Valle.exe).
 - Proyecto editable: [project.godot](juego/project.godot).
 - Instrucciones, recorrido y reglas: [LEEME.md](juego/LEEME.md).
-- Informe de entrega y límites: [AVANCE-001.md](AVANCE-001.md).
+- Informe actual y límites: [AVANCE-002.md](AVANCE-002.md).
+- Informe histórico de la primera muestra: [AVANCE-001.md](AVANCE-001.md).
 
 ## Documentos
 
@@ -40,7 +41,7 @@ Las fases no tienen fechas prometidas. Se ejecutan por dependencias y resultados
 
 ## Próximo paso
 
-El usuario ya confirmó completar la muestra hasta vencer al guardián y restaurar el faro. Completar las comprobaciones de importación/exportación, derrota/reanudación y ausencia real de F1 antes de ampliar estilos, equipo y contenido de F2.
+Probar los tres estilos, los seis talentos alternativos y el equipo de 0.2 en el entrenamiento del pueblo. Después, continuar F2 con comportamientos enemigos más diferenciados, exploración y comparación de configuraciones. F1 está cerrada con las comprobaciones de AVANCE-002.md.
 
 ## Procedencia
 

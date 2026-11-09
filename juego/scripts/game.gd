@@ -6,6 +6,7 @@ signal message(text: String)
 const Economy = preload("res://scripts/economy.gd")
 const Combat = preload("res://scripts/combat.gd")
 const SaveStore = preload("res://scripts/save_store.gd")
+const Builds = preload("res://scripts/build_rules.gd")
 var store := SaveStore.new()
 var state: Dictionary = {}
 var save_blocked := false
@@ -19,7 +20,8 @@ var enemies := {
 	"guardian": preload("res://data/guardian.tres")}
 
 static func fresh() -> Dictionary:
-	return {"schema": 1, "region": "village", "x": 11, "y": 12,
+	return {"schema": 2, "region": "village", "x": 11, "y": 12,
+		"active_style": "guardian", "loadouts": Builds.defaults(),
 		"hp": 38, "mp": 12, "potions": 3, "last_time": Time.get_unix_time_from_system(),
 		"resources": {"gold": 20, "wood": 6, "ore": 0, "ingot": 0},
 		"flags": {"mine_open": false, "forge_repaired": false, "sword": false, "boss_defeated": false, "beacon": false},
@@ -34,6 +36,7 @@ func _ready() -> void:
 		set_process(false)
 		return
 	state = store.read()
+	save_blocked = store.migration_backup_failed
 	var load_message := store.last_error
 	if state.is_empty():
 		state = fresh()
@@ -130,7 +133,11 @@ func interact(id: String) -> void:
 			else:
 				state.resources.ingot -= 3
 				state.flags.sword = true
-				commit("Espada del valle fabricada y equipada. Ataque: 7 → 12. El guardián te espera en la mina.")
+				var defaults := Builds.defaults(true)
+				for style in state.loadouts:
+					if state.loadouts[style].weapon == "training_blade":
+						state.loadouts[style].weapon = defaults[style].weapon
+				commit("Equipo del valle preparado. Espada, bastón y arco disponibles para experimentar en Personaje y estilos. El guardián te espera en la mina.")
 		"mara":
 			if not state.flags.mine_open:
 				message.emit("Mara, minera\nDespeja el sendero del bosque para que pueda volver a trabajar.")
@@ -191,7 +198,12 @@ func battle_action(action: String) -> String:
 func finish_battle() -> void:
 	if state.battle.is_empty() or state.battle.status == "fighting":
 		return
-	if state.battle.status == "lost":
+	if state.battle.get("practice", false):
+		var previous: Dictionary = state.battle.practice_return
+		state.hp = int(previous.hp)
+		state.mp = int(previous.mp)
+		state.potions = int(previous.potions)
+	elif state.battle.status == "lost":
 		state.hp = 38
 		state.mp = 12
 		state.region = "village"
@@ -199,6 +211,37 @@ func finish_battle() -> void:
 		state.y = 12
 	state.battle = {}
 	commit()
+
+func configure_character(style: String, key: String = "", value: String = "") -> bool:
+	if state.region != "village" or not state.battle.is_empty() or not style in Builds.STYLES:
+		return false
+	var next: Dictionary = state.duplicate(true)
+	next.active_style = style
+	if not key.is_empty():
+		if not key in ["talent", "weapon", "relic"]:
+			return false
+		next.loadouts[style][key] = value
+	if not Builds.valid_loadouts(next):
+		return false
+	state.active_style = next.active_style
+	state.loadouts = next.loadouts
+	commit()
+	return true
+
+func start_practice(type: String) -> bool:
+	if state.region != "village" or not state.battle.is_empty() or not enemies.has(type):
+		return false
+	if type == "guardian" and not state.flags.boss_defeated:
+		return false
+	var previous := {"hp": state.hp, "mp": state.mp, "potions": state.potions}
+	state.battle = Combat.create(enemies[type], "practice_" + type)
+	state.battle.practice = true
+	state.battle.practice_return = previous
+	state.hp = 38
+	state.mp = 12
+	state.potions = 3
+	commit()
+	return true
 
 func change_region(region: String, point: Vector2i) -> void:
 	state.region = region

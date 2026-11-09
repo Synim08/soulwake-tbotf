@@ -2,6 +2,8 @@
 
 Fecha: 9 de noviembre de 2026. Versión: **0.1.0-dev**. Motor: **Godot 4.7.2.stable.official.ed1daf0bf**. F0 completada; F1 en curso.
 
+Este informe conserva la evidencia histórica de 0.1. El cierre posterior de F1 y la versión 0.2 están documentados en [AVANCE-002.md](AVANCE-002.md).
+
 ## Qué se entrega
 
 - Proyecto editable: `juego/project.godot`.

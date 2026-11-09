@@ -27,6 +27,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de lógica no pasaron.' }
     & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_persistence.gd' -- --test-mode
     if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de persistencia no pasaron.' }
+    & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_builds.gd' -- --test-mode
+    if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de estilos y migración no pasaron.' }
     foreach ($preset in @('Web','Windows')) {
         & $GodotExecutable --headless --path $projectPath --export-release $preset
         if ($LASTEXITCODE -ne 0) { throw "Fallo al exportar $preset." }

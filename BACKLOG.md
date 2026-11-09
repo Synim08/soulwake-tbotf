@@ -1,6 +1,6 @@
 # Backlog y cobertura de ideas
 
-Actualizado: 2026-11-09. F0 está completada y F1 en curso. Las tareas amplias siguen abiertas aunque exista un primer alcance implementado. Ver AVANCE-001.md para evidencia. El identificador debe mantenerse al cambiar título, fase o prioridad.
+Actualizado: 2026-11-09. F0 y F1 están completadas para el objetivo inicial horizontal; F2 está en curso. Las tareas amplias siguen abiertas aunque exista un primer alcance implementado. Ver AVANCE-002.md para la evidencia actual. El identificador debe mantenerse al cambiar título, fase o prioridad.
 
 Prioridad: P0 = base imprescindible; P1 = siguiente profundidad; P2 = ampliación posterior. Fase inicial significa primer alcance parcial, no finalización de toda la idea.
 
@@ -78,3 +78,13 @@ Sin entradas adicionales. Añadir aquí futuras propuestas con ID, motivo, coste
 - O01: Godot 4.7.2, lienzo base 1152×768, escritorio horizontal como objetivo inicial. O02: movimiento por casillas; atacar, Chispa, defender, poción y retirada. O03: Mara minera e Ivo fundidor. O04: resultado de combate persistente; derrota vuelve al pueblo al confirmar y descuenta hasta 5 monedas una sola vez. O05: 8 horas offline y capacidad 9999, provisionales. O07: arte original provisional, sin audio. Estas decisiones operativas están documentadas en LEEME y D06.
 - Recorrido principal completado y validado por el usuario el 2026-11-09, hasta derrotar al guardián y restaurar el faro. Pendientes de F1: importación/exportación por interfaz y pruebas adicionales de derrota, reanudación y ausencia real. La adaptación y prueba móvil real continúan pendientes sin atribuirlas a la confirmación del usuario.
 - J06–J08 y J11–J13 no se consideran implementados; tampoco T11 como sistema avanzado de números grandes.
+
+## Estado tras la entrega 0.2.0-dev
+
+- Cerradas las comprobaciones de F1 de copia, derrota/reanudación y ausencia real con cierre del navegador. El estado anterior se conserva como registro histórico.
+- J06: primer alcance de los tres estilos y dos talentos alternativos por estilo; cambios gratuitos en el pueblo y configuración recordada. Sin árbol de niveles o puntos todavía.
+- J07: tres armas de herrería, dos reliquias y su selección por estilo. Efectos sobre maná, daño, quemadura y críticos. Pendiente ampliar catálogo, comparación y conjuntos nombrados.
+- T01/T02/T09: migración 1→2, copia previa separada, estados de quemadura/crítico/entrenamiento persistentes y suites ampliadas. Total: 98 comprobaciones automáticas aprobadas.
+- Entrenamiento repetible sin recompensas para probar configuraciones después de completar la historia. No es la automatización de J08 ni los desafíos con recompensas de J13.
+- O08: redistribución gratuita en el pueblo, fuera de combate, con un talento elegido por estilo. Balance provisional.
+- F2 sigue abierta: diferenciar patrones de enemigos, ampliar exploración con secretos y atajos, comparación de equipo y controles configurables/mando. Móvil real sigue pendiente.

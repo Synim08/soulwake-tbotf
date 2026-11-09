@@ -1,6 +1,6 @@
 # Diseño del juego
 
-Estado: dirección aceptada; primera muestra 0.1.0-dev implementada. Las cifras actuales son provisionales y el diseño completo sigue por desarrollar. Fecha: 2026-11-09.
+Estado: dirección aceptada; muestra 0.2.0-dev implementada, con el primer alcance de estilos y equipo. Las cifras actuales son provisionales y el diseño completo sigue por desarrollar. Fecha: 2026-11-09.
 
 ## Visión
 
@@ -105,3 +105,9 @@ Evitar introducir muchos minijuegos inconexos, recursos redundantes o capas de p
 - ¿El pueblo da una sensación visible de recuperación?
 - ¿Las configuraciones de personaje ofrecen alternativas y costes de oportunidad reales?
 - ¿El renacimiento aporta suficiente novedad y respeta el progreso que promete conservar?
+
+## Concreción de F2 en la muestra 0.2
+
+Se implementan las orientaciones de J06 mediante pasivas y una elección entre dos talentos, sin puntos ni niveles. J07 incorpora tres armas de herrería y dos reliquias. Configuración gratuita en el pueblo y recordada para cada estilo. Para que un jugador que ya restauró el faro pueda experimentar, se añade entrenamiento sin premios ni cambios de historia, con suministros prestados y restaurados al confirmar el resultado. Las cifras y reglas exactas están en juego/LEEME.md.
+
+Los comportamientos de los enemigos siguen usando la base de golpe pesado cada tercer turno; su diferenciación y la ampliación de exploración permanecen pendientes de F2. No se afirma que toda la fase esté terminada.

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GearDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/gear_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "ember_staff"
+display_name = "Bastón de brasas"
+description = "Ataque +2, Chispa +4 de daño y quemaduras +1 turno."
+attack_bonus = 2
+magic_bonus = 4
+burn_bonus = 1

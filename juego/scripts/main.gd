@@ -3,6 +3,8 @@ extends Control
 const Regions = preload("res://scripts/regions.gd")
 const World = preload("res://scripts/world.gd")
 const Combat = preload("res://scripts/combat.gd")
+const Builds = preload("res://scripts/build_rules.gd")
+const CharacterPanel = preload("res://scripts/character_panel.gd")
 const INK := Color("e4eadf")
 const MUTED := Color("9cacaa")
 const GOLD := Color("e6c485")
@@ -30,8 +32,10 @@ var io_status: Label
 var clipboard_callback: JavaScriptObject
 var clipboard_error_callback: JavaScriptObject
 var clock := 0.0
+var character_panel
 
 func _ready() -> void:
+	character_panel = CharacterPanel.new(self)
 	_configure_input()
 	_theme()
 	_build_ui()
@@ -172,10 +176,14 @@ func _build_ui() -> void:
 	world.nearby_changed.connect(func(text: String): nearby_label.text = text if is_instance_valid(nearby_label) else "")
 	nearby_label = _wrapped("Acércate y pulsa E para interactuar.", 14, GOLD)
 	map_column.add_child(nearby_label)
+	var sidebar_scroll := ScrollContainer.new()
+	sidebar_scroll.custom_minimum_size.x = 282
+	sidebar_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	body.add_child(sidebar_scroll)
 	var sidebar := VBoxContainer.new()
-	sidebar.custom_minimum_size.x = 282
+	sidebar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	sidebar.add_theme_constant_override("separation", 8)
-	body.add_child(sidebar)
+	sidebar_scroll.add_child(sidebar)
 	var quest_card := _card()
 	sidebar.add_child(quest_card)
 	var quest_box := VBoxContainer.new()
@@ -193,6 +201,7 @@ func _build_ui() -> void:
 	worker_label = _wrapped("", 15, MUTED)
 	worker_box.add_child(worker_label)
 	worker_box.add_child(_wrapped("Habla con Mara e Ivo para asignarlos. Siguen trabajando al cerrar el juego, hasta 8 horas.", 13, MUTED))
+	sidebar.add_child(_button("Personaje y estilos", func(): character_panel.show_panel()))
 	sidebar.add_child(_button("Diario del valle", _show_journal))
 	sidebar.add_child(_button("Volver al pueblo", _return_home))
 	sidebar.add_child(_button("Cómo jugar", _show_help))
@@ -276,7 +285,7 @@ func _show_shop() -> void:
 	modal_content.add_child(_button("Volver", _close_modal))
 
 func _show_battle() -> void:
-	_modal("battle", Game.enemies[Game.state.battle.enemy].display_name)
+	_modal("battle", ("Entrenamiento · " if Game.state.battle.practice else "") + Game.enemies[Game.state.battle.enemy].display_name)
 	modal_content.add_child(_label("COMBATE POR TURNOS · puedes pensar sin límite de tiempo", 12, MUTED))
 	battle_hp = ProgressBar.new()
 	battle_hp.custom_minimum_size.y = 18
@@ -289,7 +298,7 @@ func _show_battle() -> void:
 	battle_text = _wrapped("", 17)
 	battle_text.custom_minimum_size.y = 60
 	modal_content.add_child(battle_text)
-	battle_player = _label("", 17, GREEN)
+	battle_player = _wrapped("", 16, GREEN)
 	modal_content.add_child(battle_player)
 	battle_buttons = HBoxContainer.new()
 	battle_buttons.add_theme_constant_override("separation", 8)
@@ -316,15 +325,23 @@ func _refresh_battle() -> void:
 		return
 	var b: Dictionary = Game.state.battle
 	var enemy: Resource = Game.enemies[b.enemy]
+	var stats := Builds.stats(Game.state)
 	battle_hp.max_value = enemy.max_hp
 	battle_hp.value = b.hp
 	enemy_hp.text = "Enemigo · %d / %d PV" % [b.hp, enemy.max_hp]
 	battle_text.text = b.message
-	battle_player.text = "Tú · %d/38 PV    %d/12 PM    %d pociones    Ataque %d" % [Game.state.hp, Game.state.mp, Game.state.potions, 12 if Game.state.flags.sword else 7]
+	battle_player.text = "%s · %d/38 PV    %d/12 PM    %d pociones    Ataque %d" % [Builds.STYLES[Game.state.active_style].name, Game.state.hp, Game.state.mp, Game.state.potions, stats.attack]
+	battle_buttons.get_child(1).text = "Chispa · %d PM" % stats.magic_cost
 	var active: bool = b.status == "fighting"
 	battle_buttons.visible = active
 	finish_button.visible = not active
 	battle_intent.text = "Intención: " + Combat.intention(b, enemy) if active else {"won": "Victoria · recompensa guardada", "lost": "Derrota · volverás al pueblo con vida", "escaped": "Retirada segura"}.get(b.status, "")
+	if b.practice and not active:
+		battle_intent.text = "Entrenamiento terminado · tus suministros se restauran al continuar"
+	if active and b.burn_turns > 0:
+		battle_intent.text += "\nQuemadura: %d acciones restantes · 2 de daño por acción" % b.burn_turns
+	if active and Game.state.active_style == "ranger":
+		battle_intent.text += "\nPróximo crítico en %d ataque(s)" % (stats.critical_interval - int(b.focus))
 	if not active:
 		finish_button.grab_focus()
 
@@ -337,7 +354,7 @@ func _refresh() -> void:
 	objective_label.text = Game.objective()
 	worker_label.text = "Mara · " + ("1 mineral / 5 s" if s.workers.mara else "sin asignar") + "\nIvo · " + ("fundiendo: 2 minerales / lingote" if s.workers.ivo else "sin asignar")
 	region_label.text = Regions.NAMES[s.region]
-	save_label.text = "Guardado detenido · importa una copia" if Game.save_blocked else "Guardado automático · cada 5 s"
+	save_label.text = "Guardado detenido · importa una copia" if Game.save_blocked else "v0.2 · Guardado automático · cada 5 s"
 	world.refresh()
 	if modal_kind == "battle":
 		_refresh_battle()
@@ -357,7 +374,7 @@ func _return_home() -> void:
 	world.rebuild()
 
 func _show_help() -> void:
-	_show_message("Muévete con WASD, flechas o los botones inferiores. Acércate a algo y pulsa E o Interactuar.\n\nEn combate, Defender recupera maná y reduce el daño. Observa el golpe pesado de cada tercer turno. Puedes retirarte sin penalización.\n\nDescansar en el fuego es gratis. Habla con Mara e Ivo para activar o pausar su trabajo.\n\nEsta versión usa gráficos provisionales, no tiene sonido y todavía no incluye talentos ni renacimiento.")
+	_show_message("Muévete con WASD, flechas o los botones inferiores. Acércate a algo y pulsa E o Interactuar.\n\nEn combate, Defender recupera maná y reduce el daño. Observa el golpe pesado de cada tercer turno. Puedes retirarte sin penalización.\n\nEn el pueblo, abre Personaje y estilos para elegir talento, equiparte y entrenar sin gastar tus suministros. Cada estilo recuerda su equipo.\n\nDescansar en el fuego es gratis. Esta versión usa gráficos provisionales, no tiene sonido ni renacimiento.")
 
 func _show_save_menu() -> void:
 	if not Game.state.battle.is_empty():
@@ -441,3 +458,10 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	clock += delta
+
+func _exit_tree() -> void:
+	if character_panel != null:
+		character_panel.screen = null
+	character_panel = null
+	clipboard_callback = null
+	clipboard_error_callback = null
