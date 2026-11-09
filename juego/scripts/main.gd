@@ -26,6 +26,9 @@ var battle_player: Label
 var battle_buttons: HBoxContainer
 var finish_button: Button
 var io_text: TextEdit
+var io_status: Label
+var clipboard_callback: JavaScriptObject
+var clipboard_error_callback: JavaScriptObject
 var clock := 0.0
 
 func _ready() -> void:
@@ -386,6 +389,9 @@ func _export_copy() -> void:
 	modal_content.add_child(io_text)
 	io_text.select_all()
 	modal_content.add_child(_button("Copiar al portapapeles", func(): DisplayServer.clipboard_set(io_text.text)))
+	if OS.has_feature("web"):
+		modal_content.add_child(_button("Descargar archivo .json", func():
+			JavaScriptBridge.download_buffer(io_text.text.to_utf8_buffer(), "aventura-del-valle.json", "application/json")))
 	modal_content.add_child(_button("Volver", _close_modal))
 
 func _import_copy() -> void:
@@ -394,12 +400,39 @@ func _import_copy() -> void:
 	io_text = TextEdit.new()
 	io_text.custom_minimum_size = Vector2(600,220)
 	modal_content.add_child(io_text)
+	io_status = _wrapped("Puedes pegar con el botón para leer la copia más reciente.", 13, MUTED)
+	modal_content.add_child(io_status)
+	modal_content.add_child(_button("Pegar del portapapeles", _paste_copy))
 	modal_content.add_child(_button("Validar y sustituir partida", func():
 		if Game.import_text(io_text.text):
 			world.rebuild()
 			if not Game.state.battle.is_empty():
 				_show_battle()))
 	modal_content.add_child(_button("Cancelar", _close_modal))
+
+func _paste_copy() -> void:
+	if not OS.has_feature("web"):
+		io_text.text = DisplayServer.clipboard_get()
+		io_status.text = "Texto pegado. Revisa la copia antes de sustituir la partida."
+		return
+	var navigator := JavaScriptBridge.get_interface("navigator")
+	if navigator.clipboard == null:
+		io_status.text = "El navegador no permite leer el portapapeles aquí. Pega el texto manualmente."
+		return
+	clipboard_callback = JavaScriptBridge.create_callback(_clipboard_received)
+	clipboard_error_callback = JavaScriptBridge.create_callback(_clipboard_failed)
+	io_status.text = "Leyendo el portapapeles…"
+	navigator.clipboard.readText().then(clipboard_callback).catch(clipboard_error_callback)
+
+func _clipboard_received(args: Array) -> void:
+	if modal_kind != "import" or not is_instance_valid(io_text):
+		return
+	io_text.text = str(args[0]) if not args.is_empty() else ""
+	io_status.text = "Copia recibida. Revisa el texto y pulsa Validar y sustituir."
+
+func _clipboard_failed(_args: Array) -> void:
+	if modal_kind == "import" and is_instance_valid(io_status):
+		io_status.text = "No se pudo leer el portapapeles. Pega el texto manualmente; tu partida no ha cambiado."
 
 func _input(event: InputEvent) -> void:
 	if overlay and overlay.visible and event.is_action_pressed("ui_cancel") and modal_kind != "battle":

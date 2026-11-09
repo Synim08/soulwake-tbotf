@@ -23,8 +23,10 @@ try {
     New-Item -ItemType Directory -Path (Join-Path $projectRoot 'compilaciones\web'),(Join-Path $projectRoot 'compilaciones\windows') -Force | Out-Null
     & $GodotExecutable --headless --path $projectPath --editor --import --quit
     if ($LASTEXITCODE -ne 0) { throw 'Fallo de importación.' }
-    & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_core.gd'
+    & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_core.gd' -- --test-mode
     if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de lógica no pasaron.' }
+    & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_persistence.gd' -- --test-mode
+    if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de persistencia no pasaron.' }
     foreach ($preset in @('Web','Windows')) {
         & $GodotExecutable --headless --path $projectPath --export-release $preset
         if ($LASTEXITCODE -ne 0) { throw "Fallo al exportar $preset." }

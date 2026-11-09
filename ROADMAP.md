@@ -1,6 +1,6 @@
 # Roadmap de Aventura del Valle
 
-Actualizado: 9 de noviembre de 2026. Fase activa: **F1, en curso**. F0 completada en la entrega 0.1.0-dev; ver [AVANCE-001.md](AVANCE-001.md).
+Actualizado: 9 de noviembre de 2026. Fase activa: **F2, en curso**. F1 cerrada para escritorio/navegador horizontal; ver [AVANCE-002.md](AVANCE-002.md). F0 completada en la entrega 0.1.0-dev; ver [AVANCE-001.md](AVANCE-001.md).
 
 ## Objetivo
 
@@ -11,8 +11,8 @@ Crear un RPG incremental 2D donde explorar y combatir permita recuperar el valle
 | Fase | Resultado | Estado | Dependencia |
 |---|---|---|---|
 | F0 | Alcance mínimo y base de proyecto | Hecho | Ninguna |
-| F1 | Primera muestra jugable completa y persistente | En curso | F0 |
-| F2 | Combate, equipo y exploración con más decisiones | Pendiente | F1 |
+| F1 | Primera muestra jugable completa y persistente | Hecho | F0 |
+| F2 | Combate, equipo y exploración con más decisiones | En curso | F1 |
 | F3 | Economía conectada y automatización gradual | Pendiente | F1; integrar contenido de F2 |
 | F4 | Campaña regional y renacimiento significativo | Pendiente | F2 + F3 |
 | F5 | Desafíos, variedad y contenido avanzado | Pendiente | F4 |
@@ -54,7 +54,7 @@ Aceptación:
 4. Probar la versión exportada en un navegador; registrar por separado cualquier prueba de escritorio o móvil.
 5. Una persona que no conozca el código puede identificar el objetivo y la siguiente acción. Registrar la prueba cuando se realice.
 
-Validación humana recibida el 2026-11-09: el usuario completó el recorrido hasta vencer al guardián y restaurar el faro y declaró que funciona a la perfección. El ciclo principal queda validado; faltan las comprobaciones de persistencia e interfaz detalladas en AVANCE-001.md. No se da por terminada toda F1.
+Validación humana recibida el 2026-11-09: el usuario completó el recorrido hasta vencer al guardián y restaurar el faro y declaró que funciona a la perfección. El ciclo principal queda validado. Las comprobaciones de persistencia e interfaz posteriores se completaron con el alcance registrado en AVANCE-002.md; F1 queda cerrada para el objetivo horizontal de escritorio/navegador.
 
 Tareas relacionadas: J01–J05, J09–J10, J14; T01–T10.
 

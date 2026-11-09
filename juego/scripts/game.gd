@@ -28,6 +28,11 @@ static func fresh() -> Dictionary:
 		"defeated": [], "battle": {}}
 
 func _ready() -> void:
+	if OS.get_cmdline_user_args().has("--test-mode"):
+		state = fresh()
+		save_blocked = true
+		set_process(false)
+		return
 	state = store.read()
 	var load_message := store.last_error
 	if state.is_empty():
@@ -207,10 +212,17 @@ func import_text(text: String) -> bool:
 		message.emit("La copia no es una partida válida de esta versión. Tu partida actual sigue intacta.")
 		return false
 	var incoming: Dictionary = SaveStore.normalize(parsed)
+	var now := Time.get_unix_time_from_system()
+	Economy.advance(incoming, maxf(0.0, now - float(incoming.last_time)))
+	incoming.last_time = now
+	# Commit to storage first. A failed write must not replace the live session.
+	if not store.write(incoming):
+		message.emit("No se pudo guardar la copia importada. Tu partida actual sigue intacta. " + store.last_error)
+		return false
 	state = incoming
 	save_blocked = false
-	settle()
-	commit("Copia importada y guardada.")
+	changed.emit()
+	message.emit("Copia importada y guardada.")
 	return true
 
 func debug_advance(seconds: float) -> void:
