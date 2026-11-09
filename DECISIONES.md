@@ -98,3 +98,9 @@ F1 se cierra para escritorio/navegador horizontal tras validar el recorrido huma
 F2 comienza con tres estilos y dos talentos alternativos por estilo, gratuitos en el pueblo. La herrería ofrece espada, bastón y arco tras el hito de fabricación existente; el guardián desbloquea dos reliquias. Cada estilo recuerda su equipo y talento. Se elige un entrenamiento sin premios y con suministros restaurados para probar esta ampliación después del final actual. Estas son decisiones de prototipo reversibles, no balance definitivo.
 
 La compatibilidad de partidas se amplía mediante esquema 2 y migración desde esquema 1, conservando el progreso narrativo y una copia original separada. Los nuevos estados de combate persisten. Las pruebas y límites se registran en AVANCE-002.md.
+
+## D08 — aplazar los ajustes de clases
+
+Fecha: 2026-11-09. Estado: preferencia explícita del usuario tras probar 0.2.
+
+El usuario considera la versión satisfactoria y pide atender los arreglos de clases más adelante. Se aplazan los ajustes de balance y reglas de clases/talentos; el siguiente bloque propuesto de F2 se centra en enemigos y exploración. La aceptación de la muestra no se interpreta como equilibrio definitivo ni finalización de toda F2.

@@ -88,3 +88,7 @@ Sin entradas adicionales. Añadir aquí futuras propuestas con ID, motivo, coste
 - Entrenamiento repetible sin recompensas para probar configuraciones después de completar la historia. No es la automatización de J08 ni los desafíos con recompensas de J13.
 - O08: redistribución gratuita en el pueblo, fuera de combate, con un talento elegido por estilo. Balance provisional.
 - F2 sigue abierta: diferenciar patrones de enemigos, ampliar exploración con secretos y atajos, comparación de equipo y controles configurables/mando. Móvil real sigue pendiente.
+
+## Prioridad acordada después de probar 0.2
+
+El usuario declara que la versión está perfecta y pide dejar los arreglos de clases para más adelante. Se aplaza el ajuste de balance y reglas de J06; no se descarta la función existente. Siguiente bloque de F2: patrones enemigos diferenciados (J04/J05) y exploración con secretos y atajos (J12). Más adelante, comparación de equipo e interfaz. Esta priorización no equivale a implementación ni a validación exhaustiva de todas las clases.

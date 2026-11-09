@@ -60,6 +60,8 @@ Tareas relacionadas: J01–J05, J09–J10, J14; T01–T10.
 
 ## F2 — profundidad del RPG
 
+Prioridad acordada tras probar 0.2: aplazar los ajustes de clases y talentos. El siguiente bloque será diferenciar comportamientos enemigos y ampliar exploración con secretos y atajos; después revisar equipo e interfaz. El balance de clases se retomará más adelante.
+
 Avance 0.2: implementados tres estilos, dos talentos alternativos por estilo, tres armas de herrería, dos reliquias, configuración recordada y entrenamiento repetible sin premios. F2 continúa abierta por comportamientos enemigos, exploración y las mejoras de interfaz/controles restantes. Evidencia en AVANCE-002.md.
 
 - Añadir estilos de guerrero defensivo, mago de estados y explorador de críticos; permitir experimentar y redistribuir talentos en el pueblo.
