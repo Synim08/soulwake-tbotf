@@ -1,10 +1,16 @@
-# Aventura del Valle — documentación del proyecto
+# Soulwake: The Bloom of the Fallen
 
-Última actualización: 16 de noviembre de 2026.
+Última actualización: 19 de noviembre de 2026.
+
+**Soulwake: The Bloom of the Fallen** es el título vigente del juego. Aventura del Valle identifica las versiones y los archivos históricos.
 
 ## Entrega actual: 0.5.0-dev
 
 HUD de exploración conectada a la expedición real: barras, pociones, mochila, objetivos, mapa, menú y retirada. [Jugar Windows 0.5](compilaciones/expediciones-0.5/windows/Aventura-del-Valle.exe). [Informe y comprobaciones](AVANCE-005.md). La versión 0.4 y sus exportaciones se conservan.
+
+## Prueba de combate en tiempo real
+
+La muestra 0.1.2 permite probar a Caelan contra dos slimes. Abre el proyecto de la muestra en Godot 4.7.2 y pulsa F5. [Proyecto](muestras/combate-tiempo-real/project.godot) · [Controles y reglas](muestras/combate-tiempo-real/LEEME.md).
 
 ## Entrega anterior: 0.4.0-dev
 
@@ -29,7 +35,7 @@ Dirección vigente (D09): RPG roguelite 2D por turnos con expediciones variables
 
 ## Universo narrativo acordado
 
-El usuario aprobó unificar mundo e historia con Ascendant Odyssey, el proyecto anterior conservado en Project Ascension. [Revisión e integración](INTEGRACION-ASCENSION.md) recoge fuentes, personajes, mecánicas y cuestiones de canon. La versión jugable 0.4 todavía no incorpora esa historia. El usuario eligió protagonistas seleccionables, uno por expedición (D16). D17 fija el primer objetivo común: recuperar senderos y restaurar un antiguo faro desde el refugio al pie de la montaña para alcanzar el santuario. D18 atribuye la interrupción a un pulso anómalo del Necrovórtice, de origen aún desconocido. D19 fija la apertura con Caelan; su primera misión, la incorporación del resto del grupo y el título público siguen pendientes.
+El usuario aprobó unificar mundo e historia con Ascendant Odyssey, el proyecto anterior conservado en Project Ascension. [Revisión e integración](INTEGRACION-ASCENSION.md) recoge fuentes, personajes, mecánicas y cuestiones de canon. La versión jugable 0.4 todavía no incorpora esa historia. El usuario eligió protagonistas seleccionables, uno por expedición (D16). D17 fija el primer objetivo común: recuperar senderos y restaurar un antiguo faro desde el refugio al pie de la montaña para alcanzar el santuario. D18 atribuye la interrupción a un pulso anómalo del Necrovórtice, de origen aún desconocido. D19 fija la apertura con Caelan; su primera misión y la incorporación del resto del grupo siguen pendientes. D32 registra el título vigente.
 
 - [PROLOGO-CAELAN.md](PROLOGO-CAELAN.md): apertura acordada, descubrimiento y decisiones pendientes.
 

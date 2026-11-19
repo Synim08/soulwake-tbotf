@@ -306,3 +306,8 @@ La conexión a los datos y pantallas reales de la campaña queda para un paso po
 Fecha: 2026-11-16. El usuario autorizó el paso propuesto de conexión, sustitución de interfaz de exploración y prueba de expedición completa. Se implementa en 0.5.0-dev, con respaldo de la base0.4 y guardados antes del cambio.
 
 No se inventan nivel de personaje ni capacidad12: el piloto carece de ambos. La HUD se adapta a especialización, inventario y reglas de uso/retirada reales. Las pantallas de combate/recompensa/resultados/copias siguen activas; el escenario, balance y formato de guardado permanecen. El laboratorio anterior se conserva. Evidencia, límites y rutas actuales en AVANCE-005.md.
+
+
+## D32 — título del juego
+
+19 de noviembre de 2026. El título vigente hasta nuevo aviso es **Soulwake: The Bloom of the Fallen**. Aventura del Valle identifica las versiones y los archivos históricos del proyecto.

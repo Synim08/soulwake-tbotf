@@ -1,0 +1,22 @@
+config_version=5
+
+[application]
+config/name="Aventura del Valle - Prueba de combate"
+config/version="0.1.2-combate"
+run/main_scene="res://arena.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Aventura del Valle - Prueba de combate"
+
+[display]
+window/size/viewport_width=1152
+window/size/viewport_height=768
+window/size/window_width_override=1152
+window/size/window_height_override=768
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.055, 0.09, 0.09, 1)

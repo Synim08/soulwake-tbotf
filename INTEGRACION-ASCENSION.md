@@ -6,7 +6,7 @@ Fecha: 14 de noviembre de 2026. Dirección aprobada por el usuario: unificar el 
 
 El material aporta una identidad narrativa aprovechable: una montaña nacida del sacrificio de una guerra, una energía que puede sanar o destruir, personajes con motivos personales para ascender y comunidades con intereses distintos. La base Godot 0.4 aporta expediciones, combate por turnos, pueblo persistente, rutas, eventos y guardado. La integración debe conectar ambas cosas mediante misiones y decisiones jugables.
 
-El universo de referencia pasa a ser Ascendant Odyssey. Aventura del Valle sigue identificando la base técnica y los archivos actuales. El título público definitivo queda pendiente; cambiar el nombre de aplicación de Godot puede cambiar la ubicación del guardado y requiere una política de migración, no un simple reemplazo de texto.
+El universo de referencia pasa a ser Ascendant Odyssey. Aventura del Valle sigue identificando la base técnica y los archivos actuales. El título público vigente es **Soulwake: The Bloom of the Fallen** (D32). Si se cambia el nombre de aplicación de Godot en una entrega futura, habrá que conservar la ruta de guardado o migrar las partidas.
 
 ## Material revisado y procedencia
 
