@@ -2,3 +2,14 @@ juego/.godot/
 compilaciones/
 *.tmp
 *.log
+
+# Datos locales y archivos generados
+respaldos/
+.godot/
+*.exe
+*.pck
+*.zip
+*.bak
+valley*_slot*.json
+.env
+.env.*

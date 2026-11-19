@@ -20,7 +20,7 @@ try {
         $updated = $previous.Replace('../../../work/godot-tools/templates', $templateRoot)
         [System.IO.File]::WriteAllText($presetPath, $updated)
     }
-    New-Item -ItemType Directory -Path (Join-Path $projectRoot 'compilaciones\web'),(Join-Path $projectRoot 'compilaciones\windows') -Force | Out-Null
+    New-Item -ItemType Directory -Path (Join-Path $projectRoot 'compilaciones\expediciones-0.5\web'),(Join-Path $projectRoot 'compilaciones\expediciones-0.5\windows') -Force | Out-Null
     & $GodotExecutable --headless --path $projectPath --editor --import --quit
     if ($LASTEXITCODE -ne 0) { throw 'Fallo de importación.' }
     & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_core.gd' -- --test-mode
@@ -29,6 +29,10 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de persistencia no pasaron.' }
     & $GodotExecutable --headless --path $projectPath --script 'res://tests/test_builds.gd' -- --test-mode
     if ($LASTEXITCODE -ne 0) { throw 'Las pruebas de estilos y migración no pasaron.' }
+    foreach ($suite in @('test_expedition.gd','test_expedition_store.gd','test_variations.gd','test_hud_integration.gd')) {
+        & $GodotExecutable --headless --path $projectPath --script "res://tests/$suite" -- --test-mode
+        if ($LASTEXITCODE -ne 0) { throw "Fallo de pruebas: $suite" }
+    }
     foreach ($preset in @('Web','Windows')) {
         & $GodotExecutable --headless --path $projectPath --export-release $preset
         if ($LASTEXITCODE -ne 0) { throw "Fallo al exportar $preset." }

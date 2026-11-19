@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 76" fill="none">
+  <defs><linearGradient id="gold" x1="6" y1="10" x2="65" y2="70" gradientUnits="userSpaceOnUse"><stop stop-color="#f5e0a0"/><stop offset=".48" stop-color="#b18a4e"/><stop offset="1" stop-color="#ddc384"/></linearGradient><radialGradient id="petrol"><stop stop-color="#24494c"/><stop offset="1" stop-color="#0d2930"/></radialGradient></defs>
+  <circle cx="38" cy="38" r="26" fill="url(#petrol)" stroke="#a29160" stroke-width="1"/>
+  <path d="M33 7C8 9 2 41 20 61C35 78 70 62 69 36C68 16 50 9 35 13M20 16C-2 36 24 74 50 65M17 55C37 77 74 45 62 21" stroke="url(#gold)" stroke-width="1.4"/>
+  <path d="M19 17C5 29 10 47 19 53C10 34 31 33 19 17ZM54 61C70 51 70 37 65 25C67 44 46 45 54 61Z" fill="#62c9b5"/>
+  <path d="M14 44C2 34 9 12 29 9C16 10 12 26 14 44ZM62 48C70 54 58 68 45 69C56 64 58 54 62 48Z" fill="url(#gold)"/>
+  <path d="m37 3 3 6-3 5-3-5Z" fill="#d3dcb1"/><path d="m7 39 3 4-3 4-2-4Z" fill="#8ae1cc"/>
+</svg>

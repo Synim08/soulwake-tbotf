@@ -1,0 +1,11 @@
+{
+  "version": "0.5.0-dev",
+  "previous_checks": 1981,
+  "hud_integration_checks": 75,
+  "failures": 0,
+  "save_schema_changed": false,
+  "world_or_rules_changed": false,
+  "windows_original_save_files_unchanged": 5,
+  "web_natural_cycle": "N0 -> N1 variant1 -> reward -> reload -> retreat -> village",
+  "native_full_cycle": "automated UI test, fixed encounter variants; includes boss and defeat fixture"
+}

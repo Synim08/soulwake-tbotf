@@ -1,6 +1,109 @@
-# Aventura del Valle — versión 0.2.0-dev
+# Aventura del Valle — Expediciones 0.5.0-dev
+
+Proyecto editable para **Godot 4.7.2**, GDScript, renderizador Compatibility. Actualizado: 16 de noviembre de 2026.
+
+## Novedades 0.5
+
+HUD compacta conectada a los datos reales. M abre el mapa, Escape abre el menú y Q utiliza una poción en combate. La mochila se consulta al pulsarla. En el pueblo muestra el almacén protegido. No se añadió un límite de capacidad ni nivel ficticio. Reglas y guardados se conservan; informe en [AVANCE-005.md](../AVANCE-005.md).
+
+## Novedades anteriores 0.4
+
+Inicia una salida nueva: los encuentros pueden cambiar de patrón y el campamento incluye un evento opcional elegido al comenzar. Acércate al personaje junto al campamento y pulsa E. Puedes encontrar un mercader (2 materiales por suministro), altar (8 PV al aceptar mejora) o viajero (un suministro y recompensa si regresas vivo). Cerrar/reabrir conserva encuentros y ofertas. Una salida 0.3 en curso mantiene su contenido hasta terminarla. Detalles y pruebas en [AVANCE-004.md](../AVANCE-004.md).
+
+## Jugar y editar
+
+- Windows, piloto de expediciones: `../compilaciones/expediciones-0.5/windows/Aventura-del-Valle.exe`.
+- Web, piloto: `../compilaciones/expediciones-0.5/web/`; servir por HTTP, no abrir como archivo local. Desde esa carpeta, `python -m http.server 8773 --bind 127.0.0.1`, después abrir `http://127.0.0.1:8773`.
+- Editor: importar `project.godot`; su escena principal es `scenes/expedition.tscn`.
+- La versión incremental 0.2 sigue en `../compilaciones/windows/` y `../compilaciones/web/`. Sus instrucciones históricas aparecen al final.
+- Informe vigente: [AVANCE-005.md](../AVANCE-005.md); especificación: [EXPEDICION-001.md](../EXPEDICION-001.md).
+
+La plataforma inicial sigue siendo escritorio/navegador horizontal. Las exportaciones están generadas; se comprobó un recorrido completo en Chromium y un arranque nativo aislado según el informe; no se acredita soporte móvil real, mando, Safari o Firefox por la prueba en Chromium.
+
+## Primer recorrido
+
+1. Abre **Menú > Preparar personaje** o acércate al Patio de aventureros. Habilitarlo es gratis.
+2. Elige Guerrero/Guardián, Asesino/Duelista o Mago/Piromante. Comienzas con 38 PV, 12 PM, arma compatible y 2 pociones de 22 PV.
+3. Inicia el Bosque del Sendero. Camina hasta el cartel del este y abre el mapa para avanzar.
+4. En el Claro de savia, acércate al slime y confirma el combate. Elige tu primera mejora tras vencer; hay un cofre opcional en un desvío.
+5. Elige Ribera o Linde. La Ribera ofrece curación o madera; el Linde exige vencer al lobo y concede mineral.
+6. En el campamento, elige una sola recuperación de vida/maná o continúa sin descansar.
+7. Elige Ruinas o Tala. Las Ruinas permiten contactar a Mara tras el murciélago; la Tala tiene un veterano y arma compatible.
+8. En el Umbral, recoge el alijo y elige otra mejora. Puedes volver al pueblo con tu mochila desde aquí o enfrentarte al jefe.
+9. Al regresar, consulta el resumen y los proyectos. La Botica exige rescatar a Mara y 4 madera/2 mineral; el Banco de equipo exige vencer al jefe y 8 madera/6 mineral.
+
+Las dos bifurcaciones generan cuatro recorridos posibles; se visitan siete escenarios por salida completa. Los terrenos son fijos y hechos a mano. Las ofertas temporales usan semilla, se guardan y no cambian al recargar.
+
+## Controles y decisiones
+
+- WASD o flechas: caminar. La marcha se pausa al abrir la mochila o un menú.
+- E o Espacio: interactuar cerca de un objetivo; el texto bajo el mapa indica cuál.
+- Ratón o navegación de foco/Enter: menús y combate.
+- Escape: cerrar menús que se pueden cancelar; no abandona combate, recompensa obligatoria de resolver ni resumen pendiente.
+- Para avanzar, estar junto al cartel de salida y abrir el mapa. No se reabren las ramas descartadas ni los nodos anteriores.
+- Las hierbas, el descanso y las ofertas deben elegirse u omitirse antes de continuar/regresar. El contacto con Mara y el cofre son opcionales.
+
+## Combate y especializaciones
+
+| Especialización | Regla inicial | Arma básica |
+|---|---|---|
+| Guardián | Defender devuelve 3 de daño si el enemigo golpea. No devuelve daño durante preparaciones sin ataque. | Espada, ataque total 12 |
+| Duelista | Cada tercer ataque básico válido es crítico; contador visible y multiplicador inicial ×2,5 antes de defensa. | Dagas, ataque total 11 |
+| Piromante | Chispa aplica quemadura de 2 de daño durante 3 acciones válidas, incluida la actual, por el bastón inicial. | Bastón, ataque 9 y Chispa 17 |
+
+Chispa auxiliar está disponible para las tres especializaciones: cuesta 4 PM y hace 13 de daño para Guardián/Duelista, sin quemadura. El Piromante añade los efectos de su arma. Defender recupera 3 PM de base y reduce el daño del golpe; las mejoras pueden modificarlo. Las acciones inválidas no consumen turno, maná ni poción.
+
+Los enemigos anuncian golpes, preparaciones, guardia y drenaje de PM. El veterano/jefe pueden obtener guardia que reduce en 3 el siguiente golpe directo y se consume; también afecta a Chispa. Las quemaduras atraviesan defensa y guardia. El jefe cambia de patrón al alcanzar la mitad de PV, con una preparación anunciada sin ataque adicional oculto.
+
+Doce mejoras temporales entre catálogos de especialización y común: cada oferta R1/R2 muestra dos compatibles y una común no poseída. La ruta de Tala ofrece arma de potencia o táctica, o conservar la actual. No se acumulan bonificaciones de armas reemplazadas. Los efectos temporales desaparecen al terminar el intento. El balance fino y las especializaciones adicionales siguen pendientes.
+
+## Qué conservas y qué pierdes
+
+- **Retirada:** desde un lugar despejado, sin combate/decisión pendiente; todos los materiales de mochila pasan al almacén. Termina la expedición.
+- **Derrota:** se pierden todos los materiales transportados y las mejoras/equipo temporales. El almacén y edificios anteriores quedan intactos. Si ambos combatientes caen, es derrota.
+- **Victoria del jefe:** deposita materiales, cierra la salida y consolida un hito único. El jefe puede volver a combatirse en otra expedición.
+- **Mara:** queda rescatada solo si contactaste con ella y regresas por retirada o victoria. Si caes, podrás encontrarla de nuevo.
+- **Suministros prestados:** no se venden ni depositan. La próxima salida vuelve a ser gratuita y restaura el presupuesto inicial.
+- No hay huida dentro del combate. Antes de comprometerte, la interfaz advierte que deberás vencer para despejar el nodo.
+
+La Botica permite cambiar entre el kit normal y 3 tónicos de 12 PV. El Banco habilita armas tácticas iniciales. Son opciones alternativas y se construyen una sola vez; no se añade producción offline ni multiplicador permanente.
+
+## Guardado y copias
+
+El piloto usa `user://valley_roguelite_slot_v1.json`, con respaldo `.bak`, esquema 1 e identificador de modo `roguelite`. La partida incremental `valley_slot_v1.json` sigue separada. El autoload legado no carga ni escribe su ranura durante el piloto. No se convierte automáticamente la economía ni el progreso 0.2 al piloto.
+
+Las acciones guardan el candidato válido antes de cambiar la sesión. El movimiento se conserva periódicamente (intervalo de hasta 2 segundos) y al perder foco/cerrar. Si una escritura falla, la interfaz explica el problema; importar no sustituye la sesión si no puede guardar la copia validada. Si principal y respaldo están dañados, se conservan los archivos y se bloquea el guardado hasta recuperar una copia.
+
+**Partida y copias** permite guardar, exportar e importar JSON; en web incluye descarga y pegado asíncrono sujeto al permiso del navegador. La copia contiene campaña, expedición activa y resultado pendiente. Exporta antes de importar otra para conservar ambas. Los archivos de navegador y Windows siguen siendo independientes; cambiar de origen/puerto puede cambiar el almacenamiento web disponible.
+
+Cerrar suspende la misma salida, no cuenta como retirada ni permite volver a tirar ofertas. No hay ingresos por ausencia. Reanudar una recompensa o resultado no vuelve a entregar materiales.
+
+## Código y comprobaciones
+
+- `scripts/expedition.gd`: servicio, comandos transaccionales y coordinación del guardado.
+- `scripts/expedition_rules.gd`: estado, rutas, combate, ofertas, eventos, proyectos y liquidación.
+- `scripts/expedition_store.gd`: validación, lectura/escritura y respaldo de ranura piloto.
+- `scripts/expedition_main.gd`: interfaz y copias.
+- `scripts/expedition_world.gd`: movimiento y dibujo de escenarios.
+- `scripts/expedition_maps.gd`: terreno, objetos y accesibilidad.
+- `tests/test_expedition.gd`: lógica del piloto.
+- `tests/test_expedition_store.gd`: persistencia, validación y estados tras comandos.
+- Los scripts y suites 0.2 se conservan para regresión y referencia.
+
+Ejecutar suites siempre con `-- --test-mode`, que evita cargar/escribir la partida real. Ejemplo: `Godot_v4.7.2-stable_win64_console.exe --headless --path RUTA_DEL_PROYECTO --script res://tests/test_expedition.gd -- --test-mode`.
+
+El build registrado suma **1842 comprobaciones aprobadas** (167 piloto, 1577 store y 98 legado). El número de comprobaciones de store puede variar con las ofertas y acciones de las rutas generadas en esa ejecución. Los resultados automáticos no acreditan legibilidad, duración, diversión ni balance humano. La revisión visual/exportada vigente se detalla en AVANCE-003.md.
+
+Arte provisional dibujado por código; sin audio, procedural de escenarios, subclases adicionales, campaña extensa, nube, multijugador o soporte móvil real validado.
+
+<details>
+<summary>Instrucciones históricas de las compilaciones incrementales 0.2</summary>
+
+# Referencia histórica — versión 0.2.0-dev
 
 Proyecto editable para **Godot 4.7.2**, GDScript, renderizador Compatibility.
+
+> Estas instrucciones describen exclusivamente las compilaciones históricas 0.2 conservadas. El proyecto editable abre ahora el piloto 0.3 documentado arriba.
 
 ## Jugar
 
@@ -99,3 +202,5 @@ Las recetas, misiones y edificios tienen reglas pequeñas en el servicio de jueg
 Usa también `test_persistence.gd` y `test_builds.gd`, siempre con `-- --test-mode`, o ejecuta el script de compilación que reúne las tres suites.
 
 Consulta el informe `../AVANCE-002.md` para distinguir qué se ha comprobado de lo pendiente.
+
+</details>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Caelan · Muestra del Necrovórtice</title>
+  <link rel="icon" href="assets/core.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 5 9 3l6 3 6-2v15l-6 2-6-3-6 2V5ZM9 3v15m6-12v15"/></symbol>
+  <symbol id="i-journal" viewBox="0 0 24 24"><path d="M5 3h14v18H5V3ZM8 3v18m3-13h5m-5 4h5m-5 4h3M3 7h3m-3 5h3m-3 5h3"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><path d="M9 3h6v7H9V3Zm-4 17v-5l4-3h6l4 3v5H5Z"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 2 6 0v3l3 2 3-1v6l-3 1-1 4 2 2-5 3-2-3-4-1-2 2-4-5 3-2V9L3 7l4-4 2 2V2Z"/><path d="M9 9h6v6H9Z"/></symbol>
+  <symbol id="i-wood" viewBox="0 0 24 24"><path d="m5 17 10-11 5 5L10 22l-5-5ZM5 17l5 5m3-13 5 5M5 6l3-3 3 3-3 3-3-3Z"/></symbol>
+  <symbol id="i-ore" viewBox="0 0 24 24"><path d="m4 14 5-9 9 2 3 9-7 5-10-7Zm5-9 4 9 5-7m-5 7 1 7m-1-7-9 0m9 0 8 2"/></symbol>
+  <symbol id="i-potion" viewBox="0 0 24 24"><path d="M9 2h6v4h-1v4l5 6v5H5v-5l5-6V6H9V2Zm-1 14h8m-6-10h4"/></symbol>
+  <symbol id="i-core" viewBox="0 0 24 24"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"/><path d="m12 8 4 4-4 4-4-4 4-4Z"/></symbol>
+</svg>
+<main class="presentation">
+  <section class="frame" aria-label="Muestra visual del Sendero del faro">
+    <img class="scene" src="assets/scene.png" alt="Caelan explora un sendero del bosque iluminado por la energía turquesa de un fragmento del faro.">
+    <div class="stage" id="stage">
+      <div class="screen-edge" aria-hidden="true"></div>
+      <section class="hero-hud" aria-label="Estado de Caelan">
+        <svg class="hero-ornament" viewBox="0 0 440 185" aria-hidden="true"><path class="gold-line" d="M6 66 64 8h66l18 18h272v20h14v98h-14v20H133l-17 15H57L6 128Z"/><path class="fine-line" d="M16 69 67 18h58l18 18h267v116H130l-16 16H62l-46-45Z"/><path class="teal-line" d="M15 130 4 119V79l17-17M425 49l9 12v25M425 129l9-12v-13"/><path class="fine-line" d="m158 18 12 8h42m150 133h32l18-8"/><path class="teal-line" d="m189 176 7-7 7 7-7 7-7-7Z"/></svg>
+        <div class="portrait-frame"><div class="portrait-art" role="img" aria-label="Retrato de Caelan"></div></div>
+        <div class="hero-stats">
+          <div class="hero-name">Caelan <span>PRÓLOGO</span></div>
+          <div class="meter-line"><span class="meter-label">VIDA</span><span class="meter-value">38 <small>/ 38</small></span><div class="meter-track health" role="meter" aria-label="Vida" aria-valuenow="38" aria-valuemin="0" aria-valuemax="38"><i></i></div></div>
+          <div class="meter-line"><span class="meter-label">MANÁ</span><span class="meter-value">12 <small>/ 12</small></span><div class="meter-track mana" role="meter" aria-label="Maná" aria-valuenow="12" aria-valuemin="0" aria-valuemax="12"><i></i></div></div>
+        </div>
+      </section>
+
+      <div class="location"><span class="location-act">FALDAS DE LA GRAN MONTAÑA</span><strong>Sendero del faro</strong><div class="location-line"><i></i><svg><use href="#i-core"/></svg><i></i></div></div>
+
+      <section class="quest panel" aria-label="Objetivo actual">
+        <button class="quest-toggle" id="quest-toggle" aria-expanded="true" aria-controls="quest-body"><span><svg><use href="#i-core"/></svg> OBJETIVO ACTUAL</span><b aria-hidden="true">−</b></button>
+        <div class="quest-body" id="quest-body"><h1>Una luz entre las raíces</h1><p>Investiga la resonancia.</p><div class="quest-rule"><span></span><i></i></div></div>
+      </section>
+
+      <button class="world-prompt" id="inspect"><kbd>E</kbd><span>Examinar el fragmento</span><i aria-hidden="true"></i></button>
+
+      <nav class="quick-access" aria-label="Accesos de exploración">
+        <button data-panel="map"><span class="diamond"><svg><use href="#i-map"/></svg></span><span class="nav-label">Mapa <kbd>M</kbd></span></button>
+        <button data-panel="journal"><span class="diamond"><svg><use href="#i-journal"/></svg></span><span class="nav-label">Diario <kbd>J</kbd></span></button>
+        <button data-panel="character"><span class="diamond"><svg><use href="#i-person"/></svg></span><span class="nav-label">Personaje <kbd>C</kbd></span></button>
+        <button data-panel="settings"><span class="diamond"><svg><use href="#i-settings"/></svg></span><span class="nav-label">Ajustes <kbd>O</kbd></span></button>
+      </nav>
+
+      <section class="pack panel" aria-label="Mochila en riesgo">
+        <div class="pack-title"><svg><use href="#i-core"/></svg> MOCHILA EN RIESGO</div>
+        <div class="pack-items"><span><svg class="wood"><use href="#i-wood"/></svg><b>4</b><small>Madera</small></span><span><svg class="ore"><use href="#i-ore"/></svg><b>2</b><small>Mineral</small></span><span><svg class="potion"><use href="#i-potion"/></svg><b>2</b><small>Pociones</small></span></div>
+      </section>
+
+      <section class="dialogue panel" id="dialogue" aria-label="Diálogo de Caelan" hidden>
+        <svg class="dialogue-ornament" viewBox="0 0 1120 250" preserveAspectRatio="none" aria-hidden="true"><path class="gold-line" d="M1 43h14V18h30V4h1040v14h20v25h14v164h-14v25h-30v14H45v-14H15v-25H1Z"/><path class="fine-line" d="M25 58V28h38m995 0h38v30m0 134v31h-38m-995 0H25v-31"/><path class="teal-line" d="m3 62 13 14v44M1116 153l-13 14v39"/></svg>
+        <div class="dialogue-portrait"><div class="portrait-art" role="img" aria-label="Caelan, pensativo"></div><span class="portrait-ring" aria-hidden="true"></span></div>
+        <span class="speaker-name">CAELAN</span>
+        <p>¿Por qué siento que esta luz me conoce?</p>
+        <button class="continue" id="continue">Continuar <kbd>E</kbd><span aria-hidden="true">›</span></button>
+      </section>
+
+      <div class="panel-backdrop" id="panel-backdrop" aria-hidden="true" hidden></div>
+      <section class="mini-panel panel" id="mini-panel" role="dialog" aria-modal="true" aria-labelledby="panel-heading" hidden>
+        <header><h2 id="panel-heading"></h2><button class="close" id="close-panel" aria-label="Cerrar panel">×</button></header>
+        <div id="panel-content"></div>
+        <footer><span>Vista de diseño</span><button class="text-button" id="return">Volver <kbd>Esc</kbd></button></footer>
+      </section>
+    </div>
+  </section>
+  <footer class="review-bar">
+    <div><strong>NECROVÓRTICE</strong><span>Muestra visual · no es una partida</span></div>
+    <div class="view-switch" role="group" aria-label="Cambiar vista"><button id="view-explore" aria-pressed="true">Exploración</button><button id="view-dialogue" aria-pressed="false">Diálogo</button></div>
+    <p>Datos ilustrativos · E interactúa · Esc cierra</p>
+  </footer>
+</main>
+<script src="ui.js"></script>
+</body>
+</html>

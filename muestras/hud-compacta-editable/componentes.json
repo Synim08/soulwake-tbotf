@@ -1,0 +1,65 @@
+{
+  "version": "0.1-diseno",
+  "base_viewport": [
+    1600,
+    900
+  ],
+  "engine_integration": false,
+  "panel": {
+    "file": "assets/panel.svg",
+    "source_size": [
+      64,
+      64
+    ],
+    "slice_margins": {
+      "left": 16,
+      "right": 16,
+      "top": 16,
+      "bottom": 16
+    },
+    "preview_border_width": 12
+  },
+  "components": {
+    "estado": {
+      "left": 32,
+      "top": 32,
+      "width": 440,
+      "height": 190
+    },
+    "objetivo": {
+      "right": 32,
+      "top": 32,
+      "width": 410,
+      "min_height": 67
+    },
+    "zona_y_retirada": {
+      "right": 32,
+      "top": 109,
+      "width": 410,
+      "min_height": 58
+    },
+    "mochila": {
+      "right": 32,
+      "bottom": 32,
+      "width": 410,
+      "min_height": 64
+    },
+    "navegacion": {
+      "left": 32,
+      "bottom": 32,
+      "gap": 14
+    }
+  },
+  "demo_values": {
+    "hp": 14,
+    "max_hp": 38,
+    "mp": 12,
+    "max_mp": 22,
+    "potions": 2,
+    "capacity": 6,
+    "max_capacity": 12,
+    "quest_progress": "1/3",
+    "low_hp_demo_threshold": 14
+  },
+  "note": "Valores y umbral de demostracion, no reglas nuevas para el juego. Validar importacion y escalas en Godot posteriormente."
+}

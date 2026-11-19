@@ -1,0 +1,15 @@
+{
+  "engine": "Godot 4.7.2",
+  "automated_checks": 21,
+  "failures": 0,
+  "main_game_files_unchanged": 68,
+  "existing_save_directories_unchanged": 1,
+  "native_windows_capture": "vida-baja-windows.png",
+  "web_captures": [
+    "vista-general-web.png",
+    "estado-normal-web.png",
+    "mochila-y-objetivo-web.png",
+    "retirada-bloqueada-web.png",
+    "ventana-960.png"
+  ]
+}

@@ -30,7 +30,7 @@ static func fresh() -> Dictionary:
 		"defeated": [], "battle": {}}
 
 func _ready() -> void:
-	if OS.get_cmdline_user_args().has("--test-mode"):
+	if OS.get_cmdline_user_args().has("--test-mode") or (str(ProjectSettings.get_setting("application/run/main_scene", "")).ends_with("expedition.tscn") and not OS.get_cmdline_user_args().has("--legacy-mode")):
 		state = fresh()
 		save_blocked = true
 		set_process(false)

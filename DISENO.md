@@ -1,113 +1,107 @@
 # Diseño del juego
 
-Estado: dirección aceptada; muestra 0.2.0-dev implementada, con el primer alcance de estilos y equipo. Las cifras actuales son provisionales y el diseño completo sigue por desarrollar. Fecha: 2026-11-09.
+Estado: dirección roguelite aceptada (D09/D10), diseño detallado pendiente. Acuerdos ampliados el 13 de noviembre de 2026. Prototipo Godot 0.2.0-dev implementado como etapa anterior; no contiene todavía el ciclo roguelite. Actualizado: 13 de noviembre de 2026. La primera expedición está implementada en el piloto 0.3 (D12), con evidencia y límites en AVANCE-003.md.
 
 ## Visión
 
-RPG incremental 2D de exploración y reconstrucción. El aventurero recupera lugares y ayuda a sus habitantes; estos producen recursos y preparan la siguiente aventura incluso durante las ausencias. El pueblo muestra físicamente el progreso.
+RPG roguelite 2D por turnos sobre expediciones desde un pueblo que se reconstruye. Cada intento ofrece rutas, encuentros y combinaciones de recompensas distintas. Una expedición puede terminar en victoria, retirada o caída; el aventurero vuelve al pueblo, donde continúan la historia, los desbloqueos y la preparación de futuros intentos.
 
-Ciclo central: explorar → recuperar un lugar o habitante → desbloquear producción → asignar ayudantes → fabricar y preparar equipo → superar un encuentro → transformar el valle.
+**Ciclo central propuesto:** preparar en el pueblo → elegir destino/ruta → explorar y combatir → escoger recompensas temporales → arriesgarse, retirarse o vencer al jefe → resolver pérdidas y botín recuperado → mejorar/desbloquear opciones persistentes → volver a salir.
 
-Principios:
+La muerte cierra una expedición y pierde todos sus materiales transportados y mejoras temporales; conserva la campaña y lo ya almacenado en el pueblo (D10). La tensión debe venir de decisiones legibles sobre ruta, recursos, combate y cuándo retirarse. La metaprogresión debería abrir opciones y contenido; las bonificaciones de poder serán limitadas para no convertir cada intento en una victoria automática.
 
-- Cada sistema debe alimentar la aventura o la reconstrucción.
-- Las mejoras importantes introducen opciones o cambian decisiones.
-- La actividad del jugador descubre y supera hitos; la automatización resuelve tareas conocidas.
-- Ausentarse permite avanzar sin exigir tener la pestaña abierta.
-- Los objetivos y las reglas son visibles dentro del juego.
-- La dificultad admite preparación y estrategias, además de mejoras estadísticas.
-- Una sesión corta debe poder lograr algo reconocible.
-- Los reinicios son voluntarios y su efecto se explica antes de aceptarlos.
+## Principios
 
-## Catálogo de propuestas jugables
+- El combate por turnos existente es la base inicial; cada acción enemiga debe poder leerse y provocar una respuesta táctica.
+- Las elecciones durante una expedición deben combinarse: armas, reliquias, habilidades, consumibles, eventos y rutas pueden crear sinergias.
+- El riesgo y la recompensa se muestran antes de elegir. La derrota puede costar botín temporal, con reglas claras y sin borrar desbloqueos de campaña.
+- El pueblo cambia visiblemente y ofrece nuevos servicios, historias, rutas y posibilidades de preparación.
+- Cada intento debe tener un cierre satisfactorio incluso si no se derrota al jefe.
+- Las sesiones deben poder guardarse y reanudarse; no exigir rachas ni penalizar la ausencia.
+- No añadir aleatoriedad que oculte información táctica ni sistemas desconectados solo para aumentar duración.
 
-### J01 — reconstrucción visible del pueblo
+## Capas de progreso por definir en F2
 
-Reparar mina, herrería, molino y puente; cada obra cambia el mapa y habilita una función. Rescatar al herrero permite fabricar; recuperar su mina aporta materiales. El orden y los costes deben probarse para evitar un bloqueo circular.
+| Capa | Ejemplos | Regla de intención |
+|---|---|---|
+| Campaña persistente | pueblo, personajes, misiones, destinos, servicios y relatos | se conserva entre expediciones |
+| Expedición temporal | ruta visitada, PV/PM, consumibles, armas/reliquias halladas, monedas de riesgo | puede perderse, gastarse o convertirse al regresar |
+| Desbloqueos duraderos | nuevas opciones de inicio, objetos que entran al conjunto posible, rutas/eventos | amplían variedad más que estadísticas infinitas |
+| Hitos de región | jefe, rescate, restauración del faro u otro objetivo narrativo | efecto persistente definido por misión |
 
-Primera versión: mina y herrería. Más adelante: otros edificios y consecuencias regionales.
+D10 fija los resultados: retirada desde un lugar despejado conserva materiales y termina el intento; victoria añade el hito/premio del jefe; caída pierde todos los materiales transportados. Los desbloqueos anteriores y el almacén del pueblo permanecen. Para el piloto, rescates/contactos se consolidan al retirarse o vencer; caer los descarta. El jefe termina inmediatamente la salida y su hito se consolida una vez. Ver EXPEDICION-001.md, sección 7.
 
-### J02 — ayudantes con funciones distintas
+## Sistemas jugables
 
-El minero obtiene mineral, el cazador ingredientes y el alquimista prepara pociones. Una plantilla limitada permite elegir dónde trabajar. La reasignación debe ser libre y comprensible. Definir si cada ayudante es un personaje único, una profesión o un grupo antes de ampliar el sistema.
+### Combate, clases y jefes
 
-### J03 — explorar desbloquea economía
+Reutilizar provisionalmente las acciones, estilos, talentos y equipo de 0.2. Distinguir enemigos por patrones, señales y respuestas; crear jefes que prueben decisiones diferentes (por ejemplo, romper guardia, interrumpir una carga o aprovechar ventanas). El usuario aplazó el balance fino de clases: no es el primer bloque de trabajo.
 
-Descubrir vetas, limpiar bosques y abrir caminos habilita materiales y rutas comerciales. La producción automática proporciona equipo y suministros para alcanzar nuevos lugares. No convertir todos los recursos en simples nombres alternativos de monedas.
+### Expediciones y rutas
 
-### J04 — combate por turnos con información útil
+Prototipar un mapa corto de nodos o habitaciones conectadas con bifurcaciones, eventos, encuentros y recompensas. En cada cruce debe haber una elección informada: ruta segura, tesoro, curación, comerciante, evento o combate de riesgo. Usar contenido modular y semilla reproducible si ayuda a repetir pruebas; no es necesario generar mapas completos de forma procedural desde el inicio.
 
-Conservar la base por turnos. Anunciar intenciones enemigas y dar utilidad a defender, interrumpir, curar y aplicar estados. Ejemplo: un gólem prepara un golpe pesado y el jugador decide cómo responder. Comenzar con pocas acciones bien diferenciadas.
+### Recompensas y sinergias
 
-### J05 — jefes con identidad
+Durante la salida se obtienen mejoras que terminan al volver, salvo la parte explícitamente rescatada. Ejemplos para explorar: quemadura que da escudo al derrotar; bloqueo que potencia el siguiente hechizo; crítico que extiende una marca; sacrificar curación por una reliquia más potente. Las sinergias deben ser entendibles y ofrecer elecciones entre opciones con ventajas y costes.
 
-Ejemplos propuestos: Rey Slime que se divide, gólem con armadura rompible y dragón que prepara su aliento. No son diseños finales. Cada jefe debe enseñar o poner a prueba una decisión distinta, con señales legibles y posibilidad de preparación.
+### Pueblo y reconstrucción
 
-### J06 — estilos de personaje intercambiables
+El pueblo es la base entre intentos. Recuperar edificios y habitantes desbloquea preparación, entrenamiento, objetos, servicios, información y destinos. Se conserva la fantasía de reconstruir el valle; la producción offline de materiales no será la progresión central. Cualquier actividad entre sesiones será secundaria, opcional y limitada.
 
-Tres orientaciones iniciales: guerrero defensivo, mago de estados y explorador de críticos. Permitir redistribuir talentos en el pueblo y guardar configuraciones. Cerrar costes y restricciones mediante pruebas; no castigar la experimentación con decisiones irreversibles inesperadas.
+### Historia y faro
 
-### J07 — equipo que modifica habilidades
+La aventura actual de mina, herrería, guardián y faro está terminada y validada en el prototipo. Decidir si se adapta como prólogo/primera expedición o como una región que se rediseña para el nuevo flujo. Mantener la historia y los guardados actuales hasta documentar la transición.
 
-Ejemplos: recuperar maná al bloquear, extender quemaduras o mejorar escudos. Pocas ranuras y una colección inicial pequeña. Comparar atributos y efectos antes de equipar. Guardar conjuntos y proteger objetos importantes frente a venta o desmontaje accidental.
+### Sesiones y accesibilidad
 
-### J08 — automatizar lo dominado
+Mantener objetivos inmediatos, resumen de regreso, lectura clara de intención/riesgo y controles de teclado/ratón. Revisar mando, táctil, escalado, accesibilidad y duración tras definir la plataforma y probar el prototipo.
 
-Delegar actividades después de conocerlas: patrullas de zonas despejadas, fabricación y tareas repetidas. Los descubrimientos y la primera victoria contra un jefe siguen siendo hitos activos. Hacer visibles las condiciones de desbloqueo y las causas de detención.
+## Preguntas para el prototipo F2
 
-### J09 — progreso offline elegido y explicado
+- Precisar la resolución de misiones/rescates y la huida durante combate; las pérdidas de materiales ya están acordadas en D10.
+- ¿Qué metamoneda existe, en qué se gasta y cómo se evita que solo compre poder acumulativo?
+- ¿Cuánto dura un intento y cuántas decisiones relevantes contiene?
+- Concretar el mapa de rutas y los pequeños escenarios explorables acordados en D10.
+- ¿Se puede guardar en mitad de la expedición y reanudar exactamente?
+- ¿Qué papel tienen clases, armas y reliquias durante una tentativa y entre intentos?
+- ¿La aventura del faro es prólogo, región inicial o se vuelve a plantear?
+- ¿Qué actividad opcional del pueblo ocurre entre sesiones sin volver a un incremental?
 
-Asignar trabajo o expediciones antes de salir; al volver, resumir tiempo, recursos producidos/consumidos, tareas terminadas y límites alcanzados. Comenzar con tareas seguras. La muestra usa 8 horas por ausencia, capacidad de 9999 minerales/lingotes y tareas seguras. Son valores provisionales; el balance final y las condiciones de un posible combate offline siguen pendientes.
+## Inspiración y límites
 
-### J10 — misiones que transforman el mundo
+Hades inspira la mezcla de intentos distintos, elecciones de construcción, dificultad configurable e historia que progresa entre intentos; no se busca copiar acción en tiempo real ni su escala narrativa. Loop Hero inspira conectar botín de expedición con mejoras de campamento; se conserva el combate por turnos y se diseñará un ciclo propio. Fuentes y límites en [INVESTIGACION.md](INVESTIGACION.md).
 
-Alternar encargos cortos con cadenas de desbloqueo. Ejemplo: rescatar al boticario → reconstruir tienda → descubrir cura → entrar al pantano. Diario con objetivo, ubicación, progreso y recompensa. Conservar el efecto de los hitos de historia según las reglas de persistencia acordadas.
+## Alcance no acordado
 
-### J11 — renacimiento con cambios importantes
+No están aprobados multijugador, monetización, cuentas, servicios en la nube, eventos periódicos ni publicación concreta. La generación procedural extensa, juego offline de expediciones y sistemas de prestigio quedan fuera del primer prototipo.
 
-Replantear el reinicio del HTML. Propuesta aceptada como dirección: conservar pueblo, descubrimientos y automatización básica, reiniciar parte del progreso del aventurero y abrir especializaciones, reliquias o variantes. Cada ciclo debe ofrecer una opción nueva y una recuperación más cómoda del tramo ya dominado.
+## Relación con la muestra 0.2
 
-Antes de implementar: especificar campo por campo qué persiste y qué reinicia; relación con historia, misiones, equipo, ayudantes y edificios; momento de desbloqueo; prevención de duplicación de recompensas. No asumir que las gemas y los multiplicadores del HTML son reglas definitivas.
+La versión existente tiene tres estilos, talentos, armas/reliquias, entrenamiento sin recompensas, mapas fijos, guardado persistente y una economía con producción offline. Se conserva como referencia y base técnica. El entrenamiento no equivale a una expedición con progresión y consecuencias. No se debe eliminar o sustituir la ranura de usuario hasta diseñar copia y compatibilidad. Reglas numéricas actuales: [juego/LEEME.md](juego/LEEME.md); pruebas y límites: [AVANCE-002.md](AVANCE-002.md).
 
-### J12 — exploración, secretos y regreso cómodo
+## Acuerdos de especialización y escenarios — 2026-11-13
 
-Regiones principales diseñadas a mano, con identidad, rutas alternativas, habitantes, secretos y recompensas especiales. Atajos y viaje rápido entre lugares descubiertos. Mazmorras variables mediante módulos se evalúan en F5, tras comprobar la exploración básica.
+Clases iniciales: Guerrero, Asesino y Mago. Elegir especialización antes de salir; edificios, personajes y misiones desbloquean opciones. El catálogo de botín combina objetos comunes con armas/mejoras de la especialización activa. El Explorador de 0.2 se adaptará a Asesino. Los seis nombres de especialización y edificios mencionados en conversación son ejemplos provisionales, no contenido implementado.
 
-### J13 — desafíos opcionales
+Exploración en dos escalas: elegir rutas en el mapa general y controlar al personaje en pequeños escenarios con desvíos, personajes, encuentros y secretos. Futuro procedural gradual: primero variar contenido de mapas fijos; después conectar módulos hechos a mano; finalmente aplicar reglas por bioma. Reproducir mediante semilla y validar acceso a salida, recompensas y objetivos.
 
-Probar estrategias mediante restricciones claras: sin pociones, equipo limitado o resistencia al daño directo. Recompensas alternativas y útiles; no obligar a completar todos para avanzar en la historia principal. Debe existir una salida clara del desafío.
+Objetivo provisional de primera prueba: 15–25 minutos, seis a ocho lugares visitados, dos bifurcaciones relevantes, reliquias con sinergias y jefe. Revisar estas cifras al jugar.
 
-### J14 — ritmo compatible con sesiones cortas
+## Primera expedición concretada — D11
 
-Objetivos inmediatos como fabricar una pieza o resolver un encargo y metas largas como recuperar una región. Evitar rachas obligatorias y obligaciones diarias que penalicen ausencias. Equilibrar juego activo y automático sin convertir uno en irrelevante.
+[EXPEDICION-001.md](EXPEDICION-001.md) fija el alcance del siguiente prototipo: siete lugares visitados, dos bifurcaciones, Guardián/Duelista/Piromante iniciales, doce mejoras temporales, armas compatibles, eventos, jefe y dos proyectos del pueblo. Mantener las cifras como parámetros revisables. Las preguntas generales anteriores se concretan para este piloto mediante sus reglas de persistencia, escenarios y resultados; la campaña completa sigue abierta.
 
-## Interfaz y comodidad
+Siguiente trabajo: implementar E1–E6 de esa especificación. No confundir diseño documentado con funciones exportadas o comprobadas.
 
-- Diario de misiones y consulta de estadísticas, bonificaciones y producción.
-- Identificación de PNJ y servicios, mapa de destinos y avisos de nuevas funciones.
-- Comparación de equipo, conjuntos guardados, filtros y protección de objetos.
-- Colas de fabricación y compras por lotes cuando reduzcan repetición útilmente.
-- Vista clara de costes, requisitos, consumos, capacidad y causas de parada.
-- Texto adaptable, diálogos paginados, teclado, ratón, mando y revisión táctil.
-- No comunicar información esencial únicamente mediante color; opciones de volumen y movimiento visual cuando proceda.
+## Estado jugable 0.3
 
-## Alcance y límites de diseño
+EXPEDICION-001 ya tiene implementación y exportaciones independientes. AVANCE-003.md registra el recorrido web y los límites. Queda evaluar con el usuario el ritmo, la claridad de rutas y la dificultad antes de avanzar a nuevos contenidos.
 
-Las referencias inspiran relaciones entre sistemas, no una copia de sus contenidos o su escala. No hay decisiones sobre multijugador, monetización, cuentas, servicios en la nube o eventos periódicos. No forman parte de la primera entrega.
+## Contenido variable 0.4
 
-Evitar introducir muchos minijuegos inconexos, recursos redundantes o capas de prestigio que solo alarguen el tiempo. Ampliar tras observar que el ciclo central funciona.
+El campamento puede incluir mercader, altar o viajero, con costes visibles y resolución única. Variantes de patrones por nodo se eligen al comenzar, sin alterar el terreno. Véase AVANCE-004.md para reglas concretas y limitaciones. Nuevas expediciones reciben el contenido; partidas 0.3 en curso mantienen su recorrido original.
 
-## Preguntas que requieren prototipo
+## Universo narrativo Ascendant Odyssey
 
-- ¿Cuánto disfruta el jugador del combate repetido y cuándo conviene delegarlo?
-- ¿Cuántos recursos y tareas puede comprender sin consultar una guía externa?
-- ¿La actividad desbloquea opciones útiles mientras la producción conserva su valor?
-- ¿El pueblo da una sensación visible de recuperación?
-- ¿Las configuraciones de personaje ofrecen alternativas y costes de oportunidad reales?
-- ¿El renacimiento aporta suficiente novedad y respeta el progreso que promete conservar?
-
-## Concreción de F2 en la muestra 0.2
-
-Se implementan las orientaciones de J06 mediante pasivas y una elección entre dos talentos, sin puntos ni niveles. J07 incorpora tres armas de herrería y dos reliquias. Configuración gratuita en el pueblo y recordada para cada estilo. Para que un jugador que ya restauró el faro pueda experimentar, se añade entrenamiento sin premios ni cambios de historia, con suministros prestados y restaurados al confirmar el resultado. Las cifras y reglas exactas están en juego/LEEME.md.
-
-Los comportamientos de los enemigos siguen usando la base de golpe pesado cada tercer turno; su diferenciación y la ampliación de exploración permanecen pendientes de F2. No se afirma que toda la fase esté terminada.
+D15 adopta el mundo y la historia del proyecto anterior como referencia de la unificación. La propuesta de conectar el refugio con la Gran Montaña, el Necrovórtice, personajes y facciones se detalla en INTEGRACION-ASCENSION.md. Sus adaptaciones particulares son propuestas hasta resolver versiones y papel de los protagonistas. El género, tres clases iniciales y guardado del piloto se mantienen como base; no se traslada automáticamente el combate de acción original.

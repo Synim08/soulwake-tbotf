@@ -2,6 +2,8 @@
 
 Consulta: 9 de noviembre de 2026. Esta investigación combina descripciones oficiales, documentación técnica y una muestra de discusiones de jugadores. No es una encuesta representativa ni demuestra que una mecánica vaya a funcionar en este proyecto.
 
+La dirección vigente se actualizó después: D09 cambia el objetivo de RPG incremental a roguelite por turnos. R01–R06 siguen siendo antecedentes de la visión anterior; no deben interpretarse como requisitos de producción offline.
+
 Las propuestas de DISENO.md son adaptaciones para Aventura del Valle. No deben atribuirse literalmente a los juegos o a todos los usuarios de una comunidad.
 
 ## Juegos de referencia
@@ -56,6 +58,22 @@ Varios comentarios valoran metas comprensibles, descubrimientos y configuracione
 
 Aplicación propuesta: reconstruir lugares reconocibles, conectar recursos y combate, diseñar desafíos opcionales y añadir contenido que cambie decisiones. Relación: J01, J03, J06, J10, J11 y J13.
 
+### R11 — Hades: variación entre intentos y progreso narrativo
+
+Fuente oficial: [Hades FAQ de Supergiant Games](https://www.supergiantgames.com/blog/hades-faq/).
+
+El estudio describe combinaciones distintas de poderes y desafíos en cada intento, junto con una historia que se desarrolla a lo largo de muchas partidas. También distingue el uso moderno de “roguelite” de los roguelikes tradicionales por turnos/estratégicos, y menciona sistemas de dificultad y progresión permanente. La referencia inspira variedad táctica y narrativa entre expediciones; no implica copiar su combate de acción ni su volumen de contenido.
+
+Aplicación propuesta: rutas/recompensas que cambian builds y personajes del pueblo que reconocen intentos. Relación: J03, J07, J10, J15 y J17.
+
+### R12 — Loop Hero: expedición y campamento
+
+Fuente oficial: [Loop Hero en Steam](https://store.steampowered.com/app/1282730/Loop_Hero/).
+
+La descripción oficial relaciona recuperar equipo durante las expediciones con ampliar un campamento que ofrece refuerzos en los siguientes recorridos. Es una referencia para conectar hallazgos del intento con una base persistente; no se propone copiar su movimiento automático, cartas ni combate.
+
+Aplicación propuesta: botín recuperado financia servicios/rutas/desbloqueos del pueblo, con una cantidad y usos que aún se deben prototipar. Relación: J01, J07–J09 y J11.
+
 ## Fuentes técnicas primarias
 
 ### R07 — recursos de Godot
@@ -90,5 +108,24 @@ Aplicación propuesta: GDScript, exportación temprana, cálculo por tiempo tran
 - Las mecánicas atribuidas a juegos proceden de sus descripciones oficiales consultadas.
 - Las opiniones reflejan comentarios concretos de varios hilos y no porcentajes o consensos de todos los jugadores.
 - No se emplean cifras de retención o de rentabilidad como evidencia de diseño.
+- R11 y R12 resumen descripciones oficiales consultadas, no una comparación exhaustiva de los sistemas ni una garantía de que su resultado se replique aquí.
 - Se intentó abrir la página de progreso offline de la wiki de Melvor Idle, pero devolvió 403. No se usa para afirmar límites, porcentajes o simulación interna de ese juego.
 - La aceptación del diseño debe comprobarse con un prototipo propio y pruebas de juego.
+
+## Aplicación al primer diseño — 13 de noviembre de 2026
+
+Las siguientes fuentes se consultaron en la conversación para proponer el formato posteriormente aceptado. Las aplicaciones son decisiones propias del proyecto; no implican reproducir sus sistemas completos.
+
+### R13 — Slay the Spire: rutas y recompensas combinables
+
+[Descripción oficial en Steam](https://store.steampowered.com/app/646570/Slay_the_Spire/): recorridos que varían entre intentos, elección de rutas de riesgo y reliquias con interacciones. Aplicación en EXPEDICION-001: dos bifurcaciones informadas y mejoras temporales compatibles con varias estrategias. No se añade un sistema de cartas. Relación: J07/J12/J17.
+
+### R14 — Into the Breach: intenciones legibles
+
+[Página del estudio](https://subsetgames.com/itb.html): anuncia ataques enemigos para planificar respuestas por turnos. Aplicación: patrones con preparación visible, guardia y transición de jefe sin acción extra oculta. No se está copiando su combate táctico en cuadrícula. Relación: J04/J05.
+
+### R15 — Darkest Dungeon: desgaste y regreso
+
+[Descripción oficial en Steam](https://store.steampowered.com/app/262060/Darkest_Dungeon/): combate por turnos, desgaste, recuperación en el pueblo y muerte permanente de personajes. Aplicación: administrar suministros durante una expedición y decidir cuándo volver. Nuestro piloto pierde materiales transportados al caer y conserva personajes/campaña; la muerte permanente de personajes no forma parte del alcance. Relación: J09/J14/J16.
+
+R11/R12 aportan historia entre intentos y vínculo expedición/pueblo. El primer diseño concreto está en EXPEDICION-001; sus cantidades requieren pruebas propias y no proceden de cifras de estos juegos.

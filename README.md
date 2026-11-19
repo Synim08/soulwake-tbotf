@@ -1,25 +1,48 @@
 # Aventura del Valle — documentación del proyecto
 
-Última actualización: 9 de noviembre de 2026.
+Última actualización: 16 de noviembre de 2026.
 
-## Estado real
+## Entrega actual: 0.5.0-dev
 
-Existe el prototipo original en HTML/JavaScript y una primera muestra jugable en Godot 4.7.2, versión 0.2.0-dev. F0 y F1 están completadas para el alcance de escritorio/navegador horizontal; F2 está en curso. Hay versiones exportadas para Windows y web. El roadmap completo sigue pendiente; consulta AVANCE-002.md para conocer la versión actual y sus pruebas.
+HUD de exploración conectada a la expedición real: barras, pociones, mochila, objetivos, mapa, menú y retirada. [Jugar Windows 0.5](compilaciones/expediciones-0.5/windows/Aventura-del-Valle.exe). [Informe y comprobaciones](AVANCE-005.md). La versión 0.4 y sus exportaciones se conservan.
 
-Dirección aceptada: ampliar el prototipo como RPG incremental 2D con Godot y GDScript, conectando exploración, reconstrucción del valle, ayudantes y progreso permanente. Mantener la posibilidad de publicar en navegador. El usuario aprobó el conjunto de propuestas del 9 de noviembre; las cifras de equilibrio, el alcance de cada entrega y las reglas señaladas como propuestas siguen sujetos a prueba.
+## Entrega anterior: 0.4.0-dev
+
+Encuentros con patrones variables y tres eventos opcionales: mercader, altar y viajero. Se conserva la partida 0.3; inicia una salida nueva para ver el contenido. Mismas rutas de Windows/Web de Expediciones. [Informe 0.4](AVANCE-004.md). El próximo paso es probar variedad y costes de los eventos.
+
+## Base e historial 0.3
+
+Existe el prototipo original en HTML/JavaScript, la muestra incremental histórica 0.2 y el piloto roguelite 0.3.0-dev en Godot 4.7.2. El Bosque del Sendero ya está implementado: preparación, rutas explorables, combates, mejoras compatibles y regreso. F2 continúa en curso por las pruebas humanas de ritmo y balance; el recorrido web completo y las exportaciones están comprobados con el alcance de AVANCE-003.md. Consulta AVANCE-003.md para la evidencia actual y sus límites.
+
+Dirección vigente (D09): RPG roguelite 2D por turnos con expediciones variables y pueblo/campaña persistentes, desarrollado en Godot y GDScript. La economía incremental/offline deja de ser el ciclo central. La muestra 0.2 se conserva como versión jugable histórica; el nuevo ciclo está implementado en una campaña y ranura independientes. Se mantiene la posibilidad de publicar en navegador.
 
 ## Jugar y editar
 
-- Windows: [Aventura-del-Valle.exe](compilaciones/windows/Aventura-del-Valle.exe).
+- Windows, entrega 0.5: [Aventura-del-Valle.exe](compilaciones/expediciones-0.5/windows/Aventura-del-Valle.exe).
+- Web, entrega 0.5: carpeta `compilaciones/expediciones-0.5/web/`, servida por HTTP.
+- Windows, muestra incremental histórica 0.2: [Aventura-del-Valle.exe](compilaciones/windows/Aventura-del-Valle.exe).
 - Proyecto editable: [project.godot](juego/project.godot).
 - Instrucciones, recorrido y reglas: [LEEME.md](juego/LEEME.md).
-- Informe actual y límites: [AVANCE-002.md](AVANCE-002.md).
+- Informe actual y límites: [AVANCE-003.md](AVANCE-003.md).
+- Informe histórico de estilos y persistencia 0.2: [AVANCE-002.md](AVANCE-002.md).
 - Informe histórico de la primera muestra: [AVANCE-001.md](AVANCE-001.md).
+
+## Universo narrativo acordado
+
+El usuario aprobó unificar mundo e historia con Ascendant Odyssey, el proyecto anterior conservado en Project Ascension. [Revisión e integración](INTEGRACION-ASCENSION.md) recoge fuentes, personajes, mecánicas y cuestiones de canon. La versión jugable 0.4 todavía no incorpora esa historia. El usuario eligió protagonistas seleccionables, uno por expedición (D16). D17 fija el primer objetivo común: recuperar senderos y restaurar un antiguo faro desde el refugio al pie de la montaña para alcanzar el santuario. D18 atribuye la interrupción a un pulso anómalo del Necrovórtice, de origen aún desconocido. D19 fija la apertura con Caelan; su primera misión, la incorporación del resto del grupo y el título público siguen pendientes.
+
+- [PROLOGO-CAELAN.md](PROLOGO-CAELAN.md): apertura acordada, descubrimiento y decisiones pendientes.
+
+- [DIRECCION-VISUAL.md](DIRECCION-VISUAL.md): dirección Necrovórtice, referencias y muestra.
+- [Muestra visual V2](muestras/necrovortice-v2/index.html): exploración y diálogo con Caelan, Almendra y marcos curvos de resonancia. [Alcance, procedencia y controles](muestras/necrovortice-v2/LEEME.md). V1 conservada para comparar.
+
+- [Muestra V3 sobre pixel art 2D](muestras/necrovortice-v3-2d/index.html): prueba cenital independiente; integración en Godot pendiente (D28/D29).
 
 ## Documentos
 
 - [ROADMAP.md](ROADMAP.md): fases, prioridades, dependencias y condiciones de finalización.
-- [DISENO.md](DISENO.md): visión, ciclo de juego y catálogo completo de las 14 propuestas jugables.
+- [DISENO.md](DISENO.md): visión roguelite, ciclo y sistemas jugables.
+- [EXPEDICION-001.md](EXPEDICION-001.md): diseño implementable del Bosque del Sendero, con mapa, tres especializaciones iniciales, enemigos, botín, edificios y resultados.
 - [TECNICA.md](TECNICA.md): arquitectura propuesta, guardado, tiempo, plataformas y comprobaciones.
 - [BACKLOG.md](BACKLOG.md): registro con identificadores estables de las ideas, mejoras y tareas.
 - [DECISIONES.md](DECISIONES.md): acuerdos, cuestiones abiertas y registro de cambios.
@@ -41,10 +64,19 @@ Las fases no tienen fechas prometidas. Se ejecutan por dependencias y resultados
 
 ## Próximo paso
 
-Probar los tres estilos, los seis talentos alternativos y el equipo de 0.2 en el entrenamiento del pueblo. Después, continuar F2 con comportamientos enemigos más diferenciados, exploración y comparación de configuraciones. F1 está cerrada con las comprobaciones de AVANCE-002.md.
+Probar humanamente la integración de HUD 0.5 con la partida habitual. La conexión de datos y el recorrido automatizado están comprobados según AVANCE-005.md; se mantienen pendientes balance fino, arte de producción y narrativa.
 
 ## Procedencia
 
 Archivo original proporcionado por el usuario: `C:/Users/Synim/Downloads/Aventura del Valle_ RPG Incremental.html`.
 
 La copia incluida es una referencia del prototipo, no la aplicación final ni una migración a Godot. Los archivos generados durante las pruebas de navegador no forman parte del producto.
+
+## Últimos acuerdos — 13 de noviembre de 2026
+
+Registrados en D10: Guerrero, Asesino y Mago con especializaciones desbloqueadas por el pueblo y botín compatible; caída pierde todos los materiales transportados; retirada permite conservarlos; mapa de rutas con pequeños escenarios explorables. Generación procedural modular prevista para más adelante. La entrega 0.3 concreta Guardián, Duelista y Piromante como especializaciones iniciales; Patio de aventureros, Botica de campaña y Banco de equipo como edificios del piloto. Las especializaciones adicionales y la generación procedural permanecen para después. Las cifras de duración y equilibrio siguen sin validar jugando.
+
+
+## Laboratorio nativo de HUD
+
+Primera prueba independiente en Godot: [abrir proyecto](muestras/hud-godot/project.godot), [ejecutable Windows](muestras/hud-godot/export/windows/HUD-Necrovortice.exe), [informe](AVANCE-HUD-001.md) y [controles](muestras/hud-godot/LEEME.md). Usa datos de ejemplo y mantiene intacta la campaña 0.4.

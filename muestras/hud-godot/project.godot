@@ -1,0 +1,24 @@
+; Muestra nativa aislada: no carga autoloads ni guardados del juego.
+config_version=5
+
+[application]
+config/name="Necrovórtice — Laboratorio de HUD"
+config/version="0.1.0-hud"
+run/main_scene="res://demo/demo.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://hud/assets/bag.svg"
+
+[display]
+window/size/viewport_width=1600
+window/size/viewport_height=1100
+window/size/window_width_override=1280
+window/size/window_height_override=880
+window/size/min_width=960
+window/size/min_height=660
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.055, 0.09, 0.075, 1)

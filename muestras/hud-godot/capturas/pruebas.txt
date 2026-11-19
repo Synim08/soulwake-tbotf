@@ -1,0 +1,4 @@
+Godot 4.7.2. HUD native: 21 checks; 0 failures.
+Windows: arranque GPU, HUD_CAPTURE 0, salida 0.
+Web: presets, mochila, objetivo largo, selector de retirada y tres tamaños revisados.
+Hash: juego y guardados existentes sin cambios.
